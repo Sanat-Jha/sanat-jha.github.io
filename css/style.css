@@ -12,6 +12,26 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
+  /* display: none; */
+}
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black; /* Background color for the loader */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it covers the entire page */
+  overflow: hidden; /* Prevent any overflow */
+}
+
+#loadingGif {
+  max-width: 90%; /* Limit GIF width to 90% of viewport width */
+  max-height: 90%; /* Limit GIF height to 90% of viewport height */
+  object-fit: contain; /* Maintain aspect ratio while fitting */
 }
 a {
   text-decoration: none;
