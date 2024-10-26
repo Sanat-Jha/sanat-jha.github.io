@@ -60,7 +60,7 @@ const hobbies = document.getElementById("hobbies");
 const textArray = [
   "Sanat is a Tech Geek",
   "Sanat loves programming.",
-  "Sanat is the freelancer you a  re looking for.",
+  "Sanat is the freelancer you are looking for.",
   "Sanat can build you a web app",
   "Sanat can develop mobile apps",
 ];
