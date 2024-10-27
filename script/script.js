@@ -28,7 +28,7 @@ function hideLoader() {
 // Execute functions on page load
 window.onload = function () {
   showRandomGif(); // Show a random GIF
-  setTimeout(hideLoader, 2000); // Hide loader after 5 seconds
+  setTimeout(hideLoader, 3000); // Hide loader after 5 seconds
 };
 
 
@@ -84,37 +84,46 @@ window.addEventListener("scroll", () => {
   }
 });
 
-//Hobbies
+// Hobbies
 const hobbies = document.getElementById("hobbies");
 
-// Array of hobbies
+// Array of hobbies without the text "Sanat"
 const textArray = [
-  "Sanat is a Tech Geek",
-  "Sanat loves programming.",
-  "Sanat is the freelancer you are looking for.",
-  "Sanat can build you a web app",
-  "Sanat can develop mobile apps",
+  " is a Tech Geek",
+  " loves programming.",
+  " is the freelancer you are looking for.",
+  " can build you a web app",
+  " can develop mobile apps",
 ];
 
-let index = 0; //Tracking each text
-let idx = 0; //Tracking the number of array elements
+let index = 0; // Tracking each character
+let idx = 0; // Tracking the current array element
+let isPaused = false; // To control the pause after each line
 
 // Function that displays each text
 function displayHobbies() {
-  hobbies.innerHTML = textArray[idx].slice(0, index);
-  index++;
+  if (!isPaused) {
+    // Always keep "Sanat" at the start and add the sliced part of the current text
+    hobbies.innerHTML = "Sanat" + textArray[idx].slice(0, index);
+    index++;
 
-  // Check if it has gotten to the end of eact text
-  if (index > textArray[idx].length) {
-    index = 0;
-    idx++;
-
-    // Checking if it has gotten to the end of the array
-    if (idx == textArray.length) {
-      idx = 0;
+    // Check if it has reached the end of the current text
+    if (index > textArray[idx].length) {
+      isPaused = true; // Pause the animation
+      setTimeout(() => {
+        index = 0;
+        idx++;
+        
+        // Reset idx if it reaches the end of the array
+        if (idx == textArray.length) {
+          idx = 0;
+        }
+        
+        isPaused = false; // Resume the animation
+      }, 1000); // 1-second pause after each line completes
     }
   }
 }
 
-// Calling the method every 1 millisecond
+// Calling the function every 100 milliseconds
 setInterval(displayHobbies, 100);
