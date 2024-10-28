@@ -532,6 +532,9 @@ footer h5 {
     font-size: 0.05rem;
   }
 }
+
+
+
 /* Skills Section */
 .skills {
   margin: 10%;
@@ -561,6 +564,14 @@ footer h5 {
   text-align: center;
   transition: transform 0.3s ease;
   overflow: hidden; /* Added for overflow management */
+}
+
+.skill-card img {
+  width: 40px; /* Set a fixed width for icons */
+  height: auto; /* Maintain aspect ratio */
+  vertical-align: middle; /* Center the image vertically */
+  margin-right: 10px; /* Space between icon and text */
+  display: inline-block; /* Ensure it aligns with text */
 }
 
 .skill-card::before,
@@ -637,6 +648,8 @@ footer h5 {
     align-items: start; /* Align items at the start */
   }
 }
+
+
 
 
 /* Contact Section */
@@ -824,3 +837,5 @@ footer h5 {
       margin-bottom: 20px; /* Space below qualifications */
   }
 }
+
+
