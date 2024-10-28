@@ -285,7 +285,26 @@ h5 {
 
 .prgramming-img img {
   width: 100%;
+  animation:blinkshadow 2s ease 1s infinite reverse;
 }
+@keyframes blinkshadow {
+  0% {
+      filter: drop-shadow(1px 2px 3px #fff); /* Red */
+  }
+  25% {
+      filter: drop-shadow(2px 2px 3px #f80332); /* White */
+  }
+  50% {
+      filter: drop-shadow(1px 2px 2px #fff); /* Yellow */
+  }
+  75% {
+      filter: drop-shadow(2px 2px 2px #efc518); /* Back to Red */
+  }
+  100% {
+      filter: drop-shadow(1px 2px 2px #fff); /* Back to Red */
+  }
+}
+
 
 .scroll-up {
   position: fixed;
@@ -326,10 +345,11 @@ h5 {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
 .card {
-  width: 350px;
+  width: 350px; /* Default width for larger screens */
   height: 350px;
   margin-top: 15px;
   background-color: #fff;
@@ -339,7 +359,7 @@ h5 {
   overflow: hidden;
 }
 
-.card .card-text{
+.card .card-text {
   width: inherit;
   height: inherit;
   position: relative;
@@ -351,29 +371,67 @@ h5 {
   z-index: 10;
   font-size: 14px;
   padding: 1rem;
-  background-color:#45ce4a;
+  background-color: #45ce4a;
 }
 
-.card .card-text a{
+.card a {
+  width: inherit;
+  height: inherit;
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  left: 0;
+  bottom: -350px;
+  z-index: 10;
+  font-size: 14px;
+  padding: 1rem;
   color: #f80332;
 }
 
-.card:hover .card-text{
+.card:hover .card-text {
   display: flex;
   bottom: 0px;
   transition: .5s ease-in-out;
 }
 
-.projects .cards .card:nth-child(1){
+.projects .cards .card:nth-child(1) {
   background-image: url("../img/consumercompass.png");
 }
 
-.projects .cards .card:nth-child(2){
+.projects .cards .card:nth-child(2) {
   background-image: url("../img/artgenix.png");
 }
 
-.projects .cards .card:nth-child(3){
+.projects .cards .card:nth-child(3) {
   background-image: url("../img/doorlity.png");
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+  .cards {
+    display: grid; /* Change to grid for mobile */
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 5px; /* Space between cards */
+  }
+  .card {
+    aspect-ratio: 16/11;
+    width: 100%;
+    height: auto;
+    margin: 0; 
+    overflow: hidden; /* Ensure no overflow */
+  }
+  .card .card-text{
+    font-size: 5px;
+    text-wrap:balance;
+    
+  }
+  .card a{
+    font-size: 5px;
+    text-wrap:balance;
+    
+  }
+
 }
 
 /* About Page */
@@ -823,7 +881,7 @@ footer h5 {
 /* Responsive */
 @media screen and (max-width: 768px) {
   .education {
-      width: 100%;
+      width: 90%;
       margin: 5%;
   }
 
@@ -833,9 +891,20 @@ footer h5 {
   }
 
   .qualifications {
-      width: 100%; /* Full width on small screens */
+      width: 90%; /* Full width on small screens */
       margin-bottom: 20px; /* Space below qualifications */
   }
+  .img-frame{
+    width: 142px;
+    height: 250px;
+  }
+  .image-div{
+    width: 150px;
+    height: 368px;
+
+  }
+  
+
 }
 
 

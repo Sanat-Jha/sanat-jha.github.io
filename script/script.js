@@ -1,4 +1,5 @@
 
+
 // Array of GIF file names
 const gifs = [
   'img/SANAT1.gif',
