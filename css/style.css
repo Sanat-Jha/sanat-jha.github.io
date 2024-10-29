@@ -228,7 +228,7 @@ header {
 .name {
   font-weight: 800;
   font-size: 5rem;
-  animation: colorChange 2s ease 1s infinite reverse;
+  animation: colorChange 5s ease 1s infinite reverse;
 }
 
 .designation {
@@ -285,7 +285,7 @@ h5 {
 
 .prgramming-img img {
   width: 100%;
-  animation:blinkshadow 2s ease 1s infinite reverse;
+  animation:blinkshadow 5s ease 5s infinite reverse;
 }
 @keyframes blinkshadow {
   0% {
