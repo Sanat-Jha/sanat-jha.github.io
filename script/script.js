@@ -93,8 +93,8 @@ const textArray = [
   " is a Tech Geek",
   " loves programming.",
   " is the freelancer you are looking for.",
-  " can build you a web app",
-  " can develop mobile apps",
+  " can build you a web app.",
+  " can develop mobile apps.",
 ];
 
 let index = 0; // Tracking each character

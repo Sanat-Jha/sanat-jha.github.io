@@ -244,9 +244,14 @@ h5 {
   margin-bottom: 20px;
   color: rgb(184, 184, 184);
 }
+.location{
+  font-size: large;
+  letter-spacing: 0.2rem;
+  color: cyan;
+}
 
 .lets-talk-btn {
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: #45ce4a;
   color: #000;
   text-transform: uppercase;
