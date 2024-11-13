@@ -90,7 +90,7 @@ const hobbies = document.getElementById("hobbies");
 
 // Array of hobbies without the text "Sanat"
 const textArray = [
-  " is a Tech Geek",
+  " is a Tech Geek.",
   " loves programming.",
   " is the freelancer you are looking for.",
   " can build you a web app.",
