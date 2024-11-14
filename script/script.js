@@ -128,3 +128,96 @@ function displayHobbies() {
 
 // Calling the function every 100 milliseconds
 setInterval(displayHobbies, 100);
+
+const aboutmeText = document.getElementById("aboutmeText");
+
+// Define the loading animation function
+function loadaboutme() {
+  const aboutme = `Hi I am Sanat Jha, a BTech student at IIT Roorkee, a passionate software engineer skilled in Python, Django, and Flutter. With a foundation in C/C++, HTML, and CSS, I build dynamic web and mobile apps. A tech enthusiast at heart, I love bringing creativity and precision to my projects. Always ready to learn and do more.`;
+
+  // Clear the text before starting the animation (optional)
+  aboutmeText.innerText = '';
+
+  aboutme.split('').forEach((char, index) => {
+    setTimeout(() => {
+      // Append character to innerText (spaces handled properly)
+      aboutmeText.innerHTML +=  char;
+      aboutmeText.scrollTop = aboutmeText.scrollHeight; // Ensure the text scrolls down
+    }, index * 10); // 100ms delay per character
+  });
+}
+
+
+// Create an intersection observer
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      loadaboutme();
+      observer.unobserve(entry.target); // Stop observing after animation trigger
+    }
+  });
+});
+
+// Select the target element
+observer.observe(aboutmeText);
+
+// Select all the list items
+const listItems = document.querySelectorAll('.qualifications li');
+
+// Create an intersection observer
+const observerborder = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    // When the entry is in view, add the class to trigger the animation
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show-border');
+    }
+  });
+}, {
+  // Set the root margin to ensure the items are observed when they are near the middle of the viewport
+  rootMargin: '0px 0px -20% 0px', // This means start observing 50% before the middle
+  threshold: 0.5 // Trigger when 50% of the element is in view
+});
+
+// Observe each list item
+listItems.forEach(item => {
+  observerborder.observe(item);
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Select all skill-level elements
+  const skillLevels = document.querySelectorAll('.skill-level');
+
+  // Function to handle the animation of skill bars
+  function animateSkillBars(entries, observer) {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              // Get the target width from the inline style
+              const skill = entry.target;
+              const targetWidth = skill.dataset.targetWidth; // Get the width from data attribute
+
+              // Start the animation
+              skill.style.width = targetWidth; // Set the width to its target value
+
+              // Unobserve the element after animation starts (to avoid repeated triggering)
+              observer.unobserve(skill);
+          }
+      });
+  }
+
+  // Create an intersection observer
+  const observer = new IntersectionObserver(animateSkillBars, {
+      threshold: 1 // Start animation when 50% of the element is in the viewport
+  });
+
+  // Observe each skill level element
+  skillLevels.forEach(skill => {
+      // Store the target width in a data attribute
+      const targetWidth = skill.style.width;
+      skill.dataset.targetWidth = targetWidth;
+      skill.style.width = "0%"; // Start at 0% width
+      observer.observe(skill);
+  });
+});
