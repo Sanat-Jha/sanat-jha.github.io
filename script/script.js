@@ -221,3 +221,66 @@ document.addEventListener("DOMContentLoaded", () => {
       observer.observe(skill);
   });
 });
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const contactSection = document.querySelector(".contact-details");
+  const contactItems = document.querySelectorAll(".contact-item");
+
+  // Intersection Observer to detect scrolling into the section
+  const observerOptions = {
+    root: null,
+    threshold: 0.5,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Start the smooth border wave animation
+        contactItems.forEach((item, index) => {
+          setTimeout(() => {
+            animateBorder(item);
+          }, index * 150); // Delay for a smooth wave effect
+        });
+        observer.unobserve(contactSection); // Run animation only once
+      }
+    });
+  }, observerOptions);
+
+  observer.observe(contactSection);
+
+  // Function to animate the border smoothly
+  function animateBorder(item) {
+    let opacity = 0;
+    let increasing = true;
+    const duration = 1000; // Total duration of the animation
+    const startTime = performance.now();
+
+    function updateBorder(time) {
+      const elapsed = time - startTime;
+      const progress = (elapsed % duration) / duration; // Normalize progress between 0 and 1
+
+      // Create a smooth wave effect with opacity transition
+      if (increasing) {
+        opacity = Math.sin(progress * Math.PI);
+      } else {
+        opacity = 1 - Math.sin(progress * Math.PI);
+      }
+
+      // Set the border with smooth opacity transition
+      item.style.border = `2px solid rgba(69, 206, 74, ${opacity})`;
+
+      // Loop the animation until 2 seconds
+      if (elapsed < duration) {
+        requestAnimationFrame(updateBorder);
+      } else {
+        // Reset border at the end of the animation
+        item.style.border = "none";
+      }
+    }
+
+    // Start the smooth animation
+    requestAnimationFrame(updateBorder);
+  }
+});
