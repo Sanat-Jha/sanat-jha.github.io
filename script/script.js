@@ -35,7 +35,6 @@ window.onload = function () {
 
 //Nav container
 const navContainer = document.querySelector(".nav-div");
-
 // Hamburger
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
@@ -43,33 +42,24 @@ const links = document.querySelectorAll(".nav-links li");
 
 hamburger.addEventListener("click", function () {
   navLinks.classList.toggle("open");
-  if (navLinks.classList[1] === "open") {
-
-    // Ensuring scrollbar is disabled when nav menu is open
-    document.body.style.overflow = "hidden";
-
-    links.forEach((link) => {
-
-      link.addEventListener("click", () => {
-
-        // Closing the nav menu
-        navLinks.classList.remove("open");
-
-        // Making the scollbar visible
-        document.body.style.overflow = "visible";
-
-        // Reverting the toggle to original state
-          hamburger.classList.remove("toggle");
-        
-      });
-    });
-  }
-
-  // Closing the navbar
   hamburger.classList.toggle("toggle");
 
   links.forEach((link) => {
     link.classList.toggle("fade");
+  });
+});
+
+// Add click event listeners to all nav links
+links.forEach((link) => {
+  link.addEventListener("click", () => {
+    // Closing the nav menu
+    navLinks.classList.remove("open");
+    
+    // Reverting the toggle to original state
+    hamburger.classList.remove("toggle");
+    
+    // Remove fade class from all links
+    links.forEach((l) => l.classList.remove("fade"));
   });
 });
 
