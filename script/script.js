@@ -363,3 +363,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+  // Load the Lottie animation
+  lottie.loadAnimation({
+    container: document.getElementById('lottie-animation'), // The container where the animation will render
+    renderer: 'svg', // Renders the animation as SVG
+    loop: true, // Loops the animation
+    autoplay: true, // Automatically plays the animation
+    path: './img/home.json' // Path to your Lottie animation JSON file
+  });
+
