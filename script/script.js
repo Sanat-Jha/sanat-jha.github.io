@@ -1,36 +1,125 @@
+   // Particles.js Configuration
+particlesJS('particles-js', {
+  particles: {
+      number: {
+          value: 50,
+          density: {
+              enable: true,
+              value_area: 1000
+          }
+      },
+      color: {
+          value: '#45ce4a'
+      },
+      shape: {
+          type: 'circle'
+      },
+      opacity: {
+          value: 0.5,
+          random: false
+      },
+      size: {
+          value: 3,
+          random: true
+      },
+      line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#45ce4a',
+          opacity: 0.4,
+          width: 1
+      },
+      move: {
+          enable: true,
+          speed: 2,
+          direction: 'none',
+          random: false,
+          straight: false,
+          out_mode: 'out',
+          bounce: false
+      }
+  },
+  interactivity: {
+      detect_on: 'canvas',
+      events: {
+          onhover: {
+              enable: true,
+              mode: 'repulse'
+          },
+          onclick: {
+              enable: true,
+              mode: 'push'
+          },
+          resize: true
+      }
+  },
+  retina_detect: true
+});
 
+// Enhanced Scroll Animation
+const scrollElements = document.querySelectorAll('.scroll-animate');
 
-// Array of GIF file names
-const gifs = [
-  'img/SANAT1.gif',
-  'img/SANAT2.gif',
-  'img/SANAT3.gif',
-  'img/SANAT4.gif',
-  'img/SANAT5.gif',
-  'img/SANAT6.gif',
-  'img/SANAT7.gif',
-  'img/SANAT8.gif',
-  'img/SANAT9.gif'
-];
-
-// Function to randomly select a GIF
-function showRandomGif() {
-  const randomIndex = Math.floor(Math.random() * gifs.length);
-  const loadingGif = document.getElementById('loadingGif');
-  loadingGif.src = gifs[randomIndex]; // Set the random GIF
-}
-
-// Function to hide the loader and show the content
-function hideLoader() {
-  document.getElementById('loader').style.display = 'none'; // Hide the loader
-  document.body.style.display = 'block'; // Show the body content
-}
-
-// Execute functions on page load
-window.onload = function () {
-  showRandomGif(); // Show a random GIF
-  setTimeout(hideLoader, 3000); // Hide loader after 5 seconds
+const elementInView = (el, percentageScroll = 100) => {
+  const elementTop = el.getBoundingClientRect().top;
+  return (
+      elementTop <= 
+      ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+  );
 };
+
+const displayScrollElement = (element) => {
+  element.classList.add('scrolled');
+};
+
+const hideScrollElement = (element) => {
+  element.classList.remove('scrolled');
+};
+
+const handleScrollAnimation = () => {
+  scrollElements.forEach((el) => {
+      if (elementInView(el, 100)) {
+          displayScrollElement(el);
+      } else {
+          hideScrollElement(el);
+      }
+  })
+}
+
+// Throttle function for scroll performance
+const throttle = (fn, wait) => {
+  let inThrottle, lastFn, lastTime;
+  return function() {
+      const context = this,
+          args = arguments;
+      if (!inThrottle) {
+          fn.apply(context, args);
+          lastTime = Date.now();
+          inThrottle = true;
+      } else {
+          clearTimeout(lastFn);
+          lastFn = setTimeout(function() {
+              if (Date.now() - lastTime >= wait) {
+                  fn.apply(context, args);
+                  lastTime = Date.now();
+              }
+          }, Math.max(wait - (Date.now() - lastTime), 0));
+      }
+  };
+};
+
+window.addEventListener('scroll', throttle(handleScrollAnimation, 250));
+
+// [Rest of your existing JavaScript code]
+   // Function to hide the loader and show the content
+    function hideLoader() {
+      document.getElementById('loader').style.display = 'none';
+      document.body.style.display = 'block';
+    }
+
+    // Execute functions on page load
+    window.onload = function() {
+      setTimeout(hideLoader, 3000); // Hide loader after 3 seconds
+    };
 
 
 //Nav container
@@ -174,45 +263,44 @@ listItems.forEach(item => {
 });
 
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
   // Select all skill-level elements
   const skillLevels = document.querySelectorAll('.skill-level');
 
   // Function to handle the animation of skill bars
   function animateSkillBars(entries, observer) {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              // Get the target width from the inline style
-              const skill = entry.target;
-              const targetWidth = skill.dataset.targetWidth; // Get the width from data attribute
-
-              // Start the animation
-              skill.style.width = targetWidth; // Set the width to its target value
-
-              // Unobserve the element after animation starts (to avoid repeated triggering)
-              observer.unobserve(skill);
-          }
-      });
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const skillLevel = entry.target;
+        // Get the stored target width and animate to it
+        const targetWidth = skillLevel.getAttribute('data-width');
+        skillLevel.style.width = targetWidth;
+        
+        // Unobserve after animation starts
+        observer.unobserve(skillLevel);
+      }
+    });
   }
 
   // Create an intersection observer
   const observer = new IntersectionObserver(animateSkillBars, {
-      threshold: 1 // Start animation when 50% of the element is in the viewport
+    threshold: 0.2,
+    rootMargin: '50px'
   });
 
-  // Observe each skill level element
-  skillLevels.forEach(skill => {
-      // Store the target width in a data attribute
-      const targetWidth = skill.style.width;
-      skill.dataset.targetWidth = targetWidth;
-      skill.style.width = "0%"; // Start at 0% width
-      observer.observe(skill);
+  // Initialize each skill level
+  skillLevels.forEach(skillLevel => {
+    // Store the original width as a data attribute
+    const originalWidth = skillLevel.style.width;
+    skillLevel.setAttribute('data-width', originalWidth);
+    
+    // Reset width to 0
+    skillLevel.style.width = '0';
+    
+    // Observe the skill level
+    observer.observe(skillLevel);
   });
 });
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const contactSection = document.querySelector(".contact-details");
@@ -274,3 +362,4 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(updateBorder);
   }
 });
+

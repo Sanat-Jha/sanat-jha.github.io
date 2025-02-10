@@ -20,6 +20,9 @@
 
   <!-- FontAwesome for Icons (Add this in the <head> section if not already included) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTXJQM4TKG"></script>
   <script>
@@ -66,8 +69,48 @@
 </head>
 
 <body>
+  <div id="particles-js"></div>
   <div id="loader">
-    <img id="loadingGif" src="" alt="Loading...">
+    <svg viewBox="0 0 600 200">
+      <defs>
+        <path id="textPath" d="M50,100 L550,100" />
+      </defs>
+      
+      <!-- Text outline for the drawing effect -->
+      <text text-anchor="middle" font-family="Montserrat, sans-serif" font-size="120" font-weight="bold">
+        <textPath href="#textPath" startOffset="50%">
+          <tspan fill="none" stroke="#00ff00" stroke-width="2" stroke-dasharray="500">SANAT</tspan>
+        </textPath>
+      </text>
+      
+      <!-- Filled text that follows the outline -->
+      <text text-anchor="middle" font-family="Montserrat, sans-serif" font-size="120" font-weight="bold">
+        <textPath href="#textPath" startOffset="50%">
+          <tspan fill="#00ff00" stroke="none">SANAT</tspan>
+        </textPath>
+      </text>
+      
+      <style>
+        @keyframes drawText {
+          0% {
+            stroke-dashoffset: 500;
+            fill-opacity: 0;
+          }
+          70% {
+            stroke-dashoffset: 0;
+            fill-opacity: 0;
+          }
+          100% {
+            stroke-dashoffset: 0;
+            fill-opacity: 1;
+          }
+        }
+        
+        text tspan {
+          animation: drawText 3s ease-out forwards;
+        }
+      </style>
+    </svg>
   </div>
   <div class="container" id="home">
     <div class="nav-div">
@@ -80,7 +123,6 @@
           <div class="line line3"></div>
         </div>
         <ul class="nav-links">
-          <li>Navigations</li>
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About Me</a></li>
           <li><a href="#education">Education</a></li>
@@ -100,7 +142,7 @@
         <p class="location" id="hobbies">
           I am a passionate frontend developer<br />based in Lagos, Nigeria.
         </p>
-        <a href="#contact" class="lets-talk-btn">Let's talk</a>
+        <a href="#contact" class="lets-talk-btn">Connect with Sanat</a>
       </div>
       <div class="prgramming-img">
         <img src="./img/homepagepic.png" alt="programming picture" />
@@ -135,7 +177,7 @@
     <section id="education" class="education">
       <div class="education-content">
         <div class="qualifications">
-          <h2>Education Qualification</h2>
+          <h1>Education Qualification</h1>
           <ul>
             <li>BTech from IIT Roorkee</li>
             <li>12th Boards from MPS School, Kota</li>
@@ -151,76 +193,100 @@
     </section>
 
 
-    <section id="skills" class="skills">
-      <h5>My Skill set<span class="dash"></span></h5>
-      <h1 class="main-h1">Tech Arsenal &#128187;</h1>
-      <div class="skill-cards">
-        <div class="skill-card">
-          <h3>
-            <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python Icon" /> Python
-          </h3>
-          <div class="skill-bar">
-            <div class="skill-level" style="width: 80%;"></div>
+<!-- Skills Section -->
+<section id="skills" class="skills">
+  <h5>My Skill set<span class="dash"></span></h5>
+  <h1 class="main-h1">Tech Arsenal &#128187;</h1>
+  <div class="skill-cards">
+      <a href="https://docs.python.org/3/" target="_blank" class="skill-card" title="View Python Documentation">
+          <div>
+              <h3>
+                  <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python Icon" /> Python
+              </h3>
+              <div class="skill-bar">
+                  <div class="skill-level" style="width: 80%;"></div>
+              </div>
           </div>
-        </div>
-        <div class="skill-card">
-          <h3>
-            <img src="https://img.icons8.com/color/48/000000/django.png" alt="Django Icon" /> Django
-          </h3>
-          <div class="skill-bar">
-            <div class="skill-level" style="width: 90%;"></div>
+      </a>
+
+      <a href="https://docs.djangoproject.com/" target="_blank" class="skill-card" title="View Django Documentation">
+          <div>
+              <h3>
+                  <img src="https://img.icons8.com/color/48/000000/django.png" alt="Django Icon" /> Django
+              </h3>
+              <div class="skill-bar">
+                  <div class="skill-level" style="width: 90%;"></div>
+              </div>
           </div>
-        </div>
-        <div class="skill-card">
-          <h3>
-            <img src="https://img.icons8.com/color/48/000000/flutter.png" alt="Flutter Icon" /> Flutter
-          </h3>
-          <div class="skill-bar">
-            <div class="skill-level" style="width: 50%;"></div>
+      </a>
+
+      <a href="https://docs.flutter.dev/" target="_blank" class="skill-card" title="View Flutter Documentation">
+          <div>
+              <h3>
+                  <img src="https://img.icons8.com/color/48/000000/flutter.png" alt="Flutter Icon" /> Flutter
+              </h3>
+              <div class="skill-bar">
+                  <div class="skill-level" style="width: 50%;"></div>
+              </div>
           </div>
-        </div>
-        <div class="skill-card">
-          <h3>
-            <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML Icon" /> HTML & CSS
-          </h3>
-          <div class="skill-bar">
-            <div class="skill-level" style="width: 80%;"></div>
+      </a>
+
+      <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="skill-card" title="View HTML & CSS Documentation">
+          <div>
+              <h3>
+                  <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML Icon" /> HTML & CSS
+              </h3>
+              <div class="skill-bar">
+                  <div class="skill-level" style="width: 80%;"></div>
+              </div>
           </div>
-        </div>
-        <div class="skill-card">
-          <h3>
-            <img src="https://img.icons8.com/color/48/000000/git.png" alt="Git Icon" /> Git
-          </h3>
-          <div class="skill-bar">
-            <div class="skill-level" style="width: 50%;"></div>
+      </a>
+
+      <a href="https://git-scm.com/doc" target="_blank" class="skill-card" title="View Git Documentation">
+          <div>
+              <h3>
+                  <img src="https://img.icons8.com/color/48/000000/git.png" alt="Git Icon" /> Git
+              </h3>
+              <div class="skill-bar">
+                  <div class="skill-level" style="width: 50%;"></div>
+              </div>
           </div>
-        </div>
-        <div class="skill-card">
-          <h3>
-            <img src="https://img.icons8.com/color/48/000000/github.png" alt="GitHub Icon" /> GitHub
-          </h3>
-          <div class="skill-bar">
-            <div class="skill-level" style="width: 40%;"></div>
+      </a>
+
+      <a href="https://docs.github.com/" target="_blank" class="skill-card" title="View GitHub Documentation">
+          <div>
+              <h3>
+                  <img src="https://img.icons8.com/color/48/000000/github.png" alt="GitHub Icon" /> GitHub
+              </h3>
+              <div class="skill-bar">
+                  <div class="skill-level" style="width: 40%;"></div>
+              </div>
           </div>
-        </div>
-        <div class="skill-card">
-          <h3>
-            <img src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png" alt="VS Code Icon" /> VS Code
-          </h3>
-          <div class="skill-bar">
-            <div class="skill-level" style="width: 80%;"></div>
+      </a>
+
+      <a href="https://code.visualstudio.com/docs" target="_blank" class="skill-card" title="View VS Code Documentation">
+          <div>
+              <h3>
+                  <img src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png" alt="VS Code Icon" /> VS Code
+              </h3>
+              <div class="skill-bar">
+                  <div class="skill-level" style="width: 80%;"></div>
+              </div>
           </div>
-        </div>
-        <div class="skill-card">
-          <h3>
-            <img src="https://img.icons8.com/color/48/000000/arduino.png" alt="Arduino Icon" /> Arduino
-          </h3>
-          <div class="skill-bar">
-            <div class="skill-level" style="width: 50%;"></div>
+      </a>
+
+      <a href="https://docs.arduino.cc/" target="_blank" class="skill-card" title="View Arduino Documentation">
+          <div>
+              <h3>
+                  <img src="https://img.icons8.com/color/48/000000/arduino.png" alt="Arduino Icon" /> Arduino
+              </h3>
+              <div class="skill-bar">
+                  <div class="skill-level" style="width: 50%;"></div>
+              </div>
           </div>
-        </div>
-      </div>
-    </section>
+      </a>
+  </div>
+</section>
 
 
     <section id="projects" class="projects">
@@ -257,33 +323,44 @@
     </section>
 
 
-    <section id="contact" class="contact">
-      <h5>Let's Connect <span class="dash"></span></h5>
-      <h1 class="main-h1">Stay in Touch &#128241;</h1>
-      <div id="contact-section" class="contact-details">
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <h5>Email</h5>
-          <a href="mailto:sanatjha4@gmail.com" target="_blank">sanatjha4 @gmail.com</a>
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-instagram"></i>
-          <h5>Instagram</h5>
-          <a href="https://instagram.com/sanatjha4" target="_blank">@sanatjha4</a>
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-linkedin"></i>
-          <h5>LinkedIn</h5>
-          <a href="https://www.linkedin.com/in/sanatjha4/" target="_blank">Sanat Kumar Jha</a>
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-github"></i>
-          <h5>GitHub</h5>
-          <a href="https://github.com/Sanat-Jha" target="_blank">Sanat-Jha</a>
-        </div>
-      </div>
-      
-    </section>
+    <!-- Contact Section -->
+<section id="contact" class="contact">
+  <h5>Let's Connect <span class="dash"></span></h5>
+  <h1 class="main-h1">Stay in Touch &#128241;</h1>
+  <div id="contact-section" class="contact-details">
+      <a href="mailto:sanatjha4@gmail.com" class="contact-item" target="_blank">
+          <div class="contact-content">
+              <i class="fas fa-envelope"></i>
+              <h5>Email</h5>
+              <span>sanatjha4@gmail.com</span>
+          </div>
+      </a>
+
+      <a href="https://instagram.com/sanatjha4" class="contact-item" target="_blank">
+          <div class="contact-content">
+              <i class="fab fa-instagram"></i>
+              <h5>Instagram</h5>
+              <span>@sanatjha4</span>
+          </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/sanatjha4/" class="contact-item" target="_blank">
+          <div class="contact-content">
+              <i class="fab fa-linkedin"></i>
+              <h5>LinkedIn</h5>
+              <span>Sanat Kumar Jha</span>
+          </div>
+      </a>
+
+      <a href="https://github.com/Sanat-Jha" class="contact-item" target="_blank">
+          <div class="contact-content">
+              <i class="fab fa-github"></i>
+              <h5>GitHub</h5>
+              <span>Sanat-Jha</span>
+          </div>
+      </a>
+  </div>
+</section>
 
 
     <footer>
