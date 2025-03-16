@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#45ce4a" />
+  <meta name="description" content="Sanat Jha Portfolio - Projects" />
+  <title>Sanat Jha - Projects</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-black text-white font-sans">
+  <div id="particles-js" class="fixed w-full h-full top-0 left-0 -z-10"></div>
+  
+  <div class="container mx-auto px-4">
+    <!-- Navigation with back arrow instead of hamburger -->
+    <nav class="py-6 flex items-center justify-between relative">
+      <a href="index.html" class="flex items-center">
+        <img class="w-8 h-auto" src="./img/logo.png" alt="Sanat Jha" />
+      </a>
+      <a href="index.html" class="flex items-center text-green-400 hover:text-green-300 transition-colors duration-300">
+        <i class="fas fa-arrow-left mr-2"></i>
+        <span>Back to Home</span>
+      </a>
+    </nav>
+
+    <div class="max-w-3xl mx-auto text-center py-20">
+      <h5 class="text-green-400 tracking-wider mb-2">My Portfolio</h5>
+      <h1 class="text-5xl font-bold mb-6 animate-pulse">All Projects</h1>
+      <h3 class="text-green-400 text-xl tracking-wider mb-8">Turning Ideas Into Reality &#128161;</h3>
+      <p class="text-gray-400 leading-relaxed">
+        Browse through my collection of projects spanning various technologies and domains. Each project represents a unique challenge and learning experience in my journey as a developer.
+      </p>
+    </div>
+
+    <div class="max-w-6xl mx-auto mb-10">
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <button class="filter-btn active px-5 py-2 rounded-full border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-black transition-all duration-300 focus:outline-none transform hover:-translate-y-1" data-filter="all">All Projects</button>
+        <button class="filter-btn px-5 py-2 rounded-full border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-black transition-all duration-300 focus:outline-none transform hover:-translate-y-1" data-filter="django">Django</button>
+        <button class="filter-btn px-5 py-2 rounded-full border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-black transition-all duration-300 focus:outline-none transform hover:-translate-y-1" data-filter="fullstack">Full Stack Web App</button>
+        <button class="filter-btn px-5 py-2 rounded-full border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-black transition-all duration-300 focus:outline-none transform hover:-translate-y-1" data-filter="static">Static Landing Pages</button>
+        <button class="filter-btn px-5 py-2 rounded-full border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-black transition-all duration-300 focus:outline-none transform hover:-translate-y-1" data-filter="react">React</button>
+        <button class="filter-btn px-5 py-2 rounded-full border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-black transition-all duration-300 focus:outline-none transform hover:-translate-y-1" data-filter="flutter">Flutter</button>
+      </div>
+    </div>
+
+    <section class="max-w-6xl mx-auto mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+        <!-- Project cards will be dynamically generated here -->
+      </div>
+
+      <!-- Empty state - appears when no projects match the filter -->
+      <div class="hidden text-center py-16" id="empty-state">
+        <i class="fas fa-search text-4xl text-green-500 mb-6"></i>
+        <h3 class="text-2xl font-semibold mb-3">No projects found</h3>
+        <p class="text-gray-400">Try adjusting your filter to find what you're looking for.</p>
+      </div>
+    </section>
+
+    <div class="fixed bottom-8 right-8 z-50">
+      <a href="#" class="flex justify-center items-center w-12 h-12 bg-green-500 rounded-full hover:bg-green-600 transition-all duration-300 transform hover:-translate-y-1">
+        <i class="fas fa-arrow-up text-black"></i>
+      </a>
+    </div>
+
+    <footer class="py-8 text-center border-t border-green-500 border-opacity-10">
+      <h5 class="text-green-500 tracking-wider">&copy;2025 Sanat Jha</h5>
+    </footer>
+  </div>
+
+  <script>
+    // Initialize particles.js
+    document.addEventListener('DOMContentLoaded', function() {
+      // Particles.js configuration
+      particlesJS('particles-js', {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#45ce4a"
+          },
+          "shape": {
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "polygon": {
+              "nb_sides": 5
+            }
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false,
+            "anim": {
+              "enable": false,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+              "enable": false,
+              "speed": 40,
+              "size_min": 0.1,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#45ce4a",
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 2,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 140,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "bubble": {
+              "distance": 400,
+              "size": 40,
+              "duration": 2,
+              "opacity": 8,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 200,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true
+      });
+
+      // Hardcoded projects data
+      const projectsData = [
+        {
+          id: 1,
+          title: "Mic Camera Stories",
+          description: "A startup platform providing voice to unheard people to share their stories and experiences with the world.",
+          image: "/img/miccamerastories.png",
+          categories: ["django", "fullstack"],
+          technologies: ["Django", "Python", "HTML/CSS"],
+          liveLink: "https://miccamerastories.com/",
+          codeLink: "https://github.com/Sanat-Jha/mic-camera-stories"
+        },
+        {
+          id: 2,
+          title: "Consumer Compass",
+          description: "A comprehensive platform for reliable tech gadget reviews, combining trusted user feedback from multiple sources.",
+          image: "/img/consumercompass.png",
+          categories: ["django", "fullstack"],
+          technologies: ["Django", "Python", "HTML/CSS"],
+          liveLink: "https://consumer-compass.onrender.com/",
+          codeLink: "https://github.com/Sanat-Jha/Consumer-Compass"
+        },
+        {
+          id: 3,
+          title: "Cerebral Enigma",
+          description: "A thought-provoking blog covering technology, social issues, and psychology, offering unique perspectives and insights.",
+          image: "/img/celebralenigma.png",
+          categories: ["django", "fullstack"],
+          technologies: ["Django", "Python", "HTML/CSS"],
+          liveLink: "https://cerebralenigma.pythonanywhere.com/",
+          codeLink: "https://github.com/Sanat-Jha/celebral-enigma"
+        },
+        {
+          id: 4,
+          title: "Wordle",
+          description: "A simple word-guessing game where players have to guess a 5-letter word in 6 attempts.",
+          image: "/img/wordle.png",
+          categories: ["react", "static landing page"],
+          technologies: ["React", "JavaScript", "HTML/CSS"],
+          liveLink: "https://sanatjha.me/Wordle/",
+          codeLink: "https://github.com/Sanat-Jha/Wordle"
+        },
+        {
+          id: 5,
+          title: "Portfolio Site",
+          description: "The Site you are currently Looking at. A simple portfolio site to showcase my projects and skills.",
+          image: "/img/portfolio-site.png",
+          categories: ["static landing page"],
+          technologies: ["JavaScript", "HTML/CSS", "Tailwind CSS"],
+          liveLink: "https://sanatjha.me/",
+          codeLink: "https://github.com/Sanat-Jha/sanat-jha.github.io"
+        },
+        {
+          id: 6,
+          title: "Quantum Computing Group Site",
+          description: "The Landing Page for QCG Club IIT roorkee. A simple landing page to showcase the club and its activities.",
+          image: "/img/QCG-site.png",
+          categories: ["static landing page"],
+          technologies: ["JavaScript", "HTML/CSS", "Tailwind CSS"],
+          liveLink: "https://sanatjha.me/QCG",
+          codeLink: "https://github.com/Sanat-Jha/QCG"
+        },
+        {
+          id: 7,
+          title: "E-cell Site",
+          description: "The Landing Page for recruitment of E-cell IIT Roorkee. A simple landing page to showcase the club and its activities.",
+          image: "/img/ecell-site.png",
+          categories: ["static landing page"],
+          technologies: ["JavaScript", "HTML/CSS", "Tailwind CSS"],
+          liveLink: "https://sanatjha.me/e-cell",
+          codeLink: "https://github.com/Sanat-Jha/e-cell"
+        },
+        {
+          id: 8,
+          title: "Resturant Site",
+          description: "A detailed professional Landing page for a Resturant named Desi Tadka. Presenting all the details like menu, location, reviews etc.",
+          image: "/img/DT-Site.png",
+          categories: ["static landing page"],
+          technologies: ["JavaScript", "HTML/CSS", "Tailwind CSS"],
+          liveLink: "https://sanatjha.me/desi-tadka-website",
+          codeLink: "https://github.com/Sanat-Jha/desi-tadka-website"
+        },
+        {
+          id: 9,
+          title: "Typing Speed Test",
+          description: "A typing speed test game where players can test their typing speed and accuracy with a detailed graph of their performance.",
+          image: "/img/typing-speed-site.png",
+          categories: ["fullstack"],
+          technologies: ["JavaScript", "HTML/CSS"],
+          liveLink: "https://sanatjha.me/typing-speed-testing-website",
+          codeLink: "https://github.com/Sanat-Jha/typing-speed-testing-website"
+        },
+        
+      ];
+
+      const projectGrid = document.getElementById('projects-grid');
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const emptyState = document.getElementById('empty-state');
+
+      // Generate project cards from data
+      function generateProjectCards() {
+        projectGrid.innerHTML = '';
+        
+        projectsData.forEach(project => {
+          const card = document.createElement('div');
+          card.className = 'project-card bg-opacity-20 bg-black border border-green-500 border-opacity-10 rounded-xl overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:border-green-500 hover:shadow-lg hover:shadow-green-500/10';
+          card.setAttribute('data-category', project.categories.join(' '));
+          
+          let techTags = '';
+          project.technologies.forEach(tech => {
+            techTags += `<span class="bg-black bg-opacity-70 text-green-500 text-xs py-1 px-2 rounded-full border border-green-500 border-opacity-50">${tech}</span>`;
+          });
+          
+          let buttons = '';
+          if (project.liveLink) {
+            buttons += `<a href="${project.liveLink}" target="_blank" class="inline-flex items-center gap-2 py-2 px-4 bg-green-500 text-black rounded hover:bg-green-600 hover:text-white transition-colors duration-300">
+              <i class="fas fa-external-link-alt"></i> Live Site
+            </a>`;
+          }
+          
+          if (project.codeLink) {
+            buttons += `<a href="${project.codeLink}" class="inline-flex items-center gap-2 py-2 px-4 bg-transparent border border-green-500 text-green-500 rounded hover:bg-green-500 hover:bg-opacity-10 transition-colors duration-300">
+              <i class="fab fa-github"></i> View Code
+            </a>`;
+          }
+          
+          card.innerHTML = `
+            <div class="relative h-48 overflow-hidden">
+              <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
+              <div class="absolute top-3 right-3 flex gap-2">
+                ${techTags}
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-green-500 text-xl font-semibold mb-3">${project.title}</h3>
+              <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                ${project.description}
+              </p>
+              <div class="flex gap-4">
+                ${buttons}
+              </div>
+            </div>
+          `;
+          
+          projectGrid.appendChild(card);
+        });
+      }
+
+      // Filter projects by category
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Update active button state
+          filterButtons.forEach(b => b.classList.remove('active', 'bg-green-500', 'text-black'));
+          btn.classList.add('active', 'bg-green-500', 'text-black');
+
+          const filter = btn.getAttribute('data-filter');
+          filterProjects(filter);
+        });
+      });
+
+      // Function to filter projects by category
+      function filterProjects(category) {
+        const projectCards = document.querySelectorAll('.project-card');
+        let visibleCount = 0;
+        
+        projectCards.forEach(card => {
+          const cardCategories = card.getAttribute('data-category').split(' ');
+          const matchesCategory = category === 'all' || cardCategories.includes(category);
+          
+          if (matchesCategory) {
+            card.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+        
+        // Show/hide empty state
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+
+      // Generate initial project cards
+      generateProjectCards();
+
+      // Initialize with "all" filter
+      filterProjects('all');
+
+      // Scroll to top button functionality
+      const scrollToTopButton = document.querySelector('.fixed.bottom-8.right-8 a');
+      scrollToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
