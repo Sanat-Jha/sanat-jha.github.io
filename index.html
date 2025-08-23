@@ -1,6 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="          fo  <!-- Google Fonts: Poppins for general text -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <!-- Google Fonts: Luxurious Script for decorative first letters (S, J and section titles) -->
+  <link href="https://fonts.googleapis.com/css2?family=Luxurious+Script&display=swap" rel="stylesheet" />mily: {
+            'poppins': ['Poppins', 'sans-serif'],
+            /* DECORATIVE FONT: Dynalight - Used for first letters of name and section titles */
+            'decorative': ['Dynalight', 'cursive']
+          }
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,13 +33,18 @@
             'bg-dark': '#000000'
           },
           fontFamily: {
-            'poppins': ['Poppins', 'sans-serif']
+            'poppins': ['Poppins', 'sans-serif'],
+            /* DECORATIVE FONT: Luxurious Script - Used for first letters of name and section titles */
+            'decorative': ['Luxurious Script', 'cursive']
           }
         }
       }
     }
   </script>
+  <!-- Google Fonts: Poppins for general text -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <!-- Google Fonts: Lobster for decorative first letters (S, J and section titles) -->
+  <link href="https://fonts.googleapis.com/css2?family=Charm&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon" />
 
@@ -266,10 +277,10 @@
           Hi there &#128075;, I'm
         </h5>
         
-        <!-- Name -->
+        <!-- Name with decorative first letters (S and J using Lobster font) -->
         <h1 class="font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 
                    leading-tight text-white animate-color-change break-words">
-          Sanat Jha
+          <span class="decorative-letter-name">S</span>anat <span class="decorative-letter-name">J</span>ha
         </h1>
         
         <!-- Designation -->
@@ -350,8 +361,9 @@
     
     <section id="about" class="about max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-[5vh]">
       <h5 class="text-sm lg:text-base mb-4">About Me <span class="dash"></span></h5>
+      <!-- About section title with decorative first letter (I using Lobster font) -->
       <h1 class="main-h1 text-2xl lg:text-4xl xl:text-5xl font-bold mb-[5vh] text-center lg:text-left">
-        Interested In Knowing Little About Me? &#129309;
+        <span class="decorative-letter-large">I</span>nterested In Knowing Little About Me? &#129309;
       </h1>
       <div class="about-me flex flex-col lg:flex-row gap-8 lg:gap-[5vw] items-center lg:items-start">
         <div class="img-frame border-4 border-primary relative w-[250px] lg:w-[20vw] xl:w-[250px] max-w-[300px]">
@@ -375,7 +387,8 @@
       <div class="education-content flex flex-col xl:flex-row justify-between items-start gap-12">
         <!-- Left Column - Education Qualifications -->
         <div class="qualifications w-full xl:w-[45%] text-center lg:text-left">
-          <h1 class="text-white text-2xl lg:text-4xl mb-6 border-b-2 border-primary pb-4">Education Qualification</h1>
+          <!-- Education section title with decorative first letter (E using Lobster font) -->
+          <h1 class="text-white text-2xl lg:text-4xl mb-6 border-b-2 border-primary pb-4"><span class="decorative-letter-large">E</span>ducation Qualification</h1>
           <ul class="list-none p-0 space-y-4">
             <li class="py-3 relative border-b border-gray-700 hover:border-primary transition-colors duration-1000">BTech from IIT Roorkee</li>
             <li class="py-3 relative border-b border-gray-700 hover:border-primary transition-colors duration-1000">12th Boards from MPS School, Kota</li>
@@ -392,7 +405,8 @@
 
         <!-- Right Column - JEE Story -->
         <div class="jee-story w-full xl:w-[50%] text-center lg:text-left">
-          <h1 class="text-white text-2xl lg:text-4xl mb-6 border-b-2 border-primary pb-4">The Journey to Dreams &#127919;</h1>
+          <!-- JEE Story section title with decorative first letter (T using Lobster font) -->
+          <h1 class="text-white text-2xl lg:text-4xl mb-6 border-b-2 border-primary pb-4"><span class="decorative-letter-large">T</span>he Journey to Dreams &#127919;</h1>
           <p class="text-text-light mb-6 leading-relaxed text-sm lg:text-base">
             Cracking JEE Advanced and securing admission to IIT Roorkee wasn't just an achievement—it was the culmination of two years of relentless dedication, countless sleepless nights, and unwavering determination. From solving complex problems at 2 AM to facing one of the world's most challenging exams, this journey transformed not just my academic path, but my entire perspective on perseverance and dreams.
           </p>
@@ -419,7 +433,8 @@
 
 <!-- Skills Section -->
 <section id="skills" class="skills max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-[5vh] text-center">
-  <h1 class="main-h1 text-2xl lg:text-4xl xl:text-5xl font-bold mb-[5vh]">Tech Arsenal &#128187;</h1>
+  <!-- Skills section title with decorative first letter (T using Lobster font) -->
+  <h1 class="main-h1 text-2xl lg:text-4xl xl:text-5xl font-bold mb-[5vh]"><span class="decorative-letter-large">T</span>ech Arsenal &#128187;</h1>
   <div class="skill-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
       <a href="https://docs.python.org/3/" target="_blank" class="skill-card group relative bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-6 overflow-hidden no-underline text-inherit transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-lg hover:shadow-primary/20" title="View Python Documentation">
           <div>
@@ -522,9 +537,10 @@
 </section>
 
 
-<section id="projects" class="projects max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-[5vh] border-t-2 border-primary">
+<section id="projects" class="projects max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-[5vh]">
   <h5 class="text-sm lg:text-base mb-4 text-primary">Featured Projects <span class="dash bg-primary"></span></h5>
-  <h1 class="main-h1 text-2xl lg:text-4xl xl:text-5xl font-bold mb-[5vh] text-center lg:text-left">Some Projects I've Worked On &#128194;</h1>
+  <!-- Projects section title with decorative first letter (S using Lobster font) -->
+  <h1 class="main-h1 text-2xl lg:text-4xl xl:text-5xl font-bold mb-[5vh] text-center lg:text-left"><span class="decorative-letter-large">S</span>ome Projects I've Worked On &#128194;</h1>
   
   <div class="project-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-12">
     <div class="project-card bg-black bg-opacity-20 border border-primary border-opacity-10 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:border-primary">
@@ -590,7 +606,8 @@
     <!-- Contact Section -->
 <section id="contact" class="contact max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-[5vh] text-center">
   <h5 class="text-sm lg:text-base mb-4">Let's Connect <span class="dash"></span></h5>
-  <h1 class="main-h1 text-2xl lg:text-4xl xl:text-5xl font-bold mb-[5vh]">Stay in Touch &#128241;</h1>
+  <!-- Contact section title with decorative first letter (S using Lobster font) -->
+  <h1 class="main-h1 text-2xl lg:text-4xl xl:text-5xl font-bold mb-[5vh]"><span class="decorative-letter-large">S</span>tay in Touch &#128241;</h1>
   <div id="contact-section" class="contact-details grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
       <a href="mailto:sanatjha4@gmail.com" class="contact-item group relative no-underline text-inherit bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-8 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:border-primary hover:shadow-lg hover:shadow-primary/20" target="_blank">
           <div class="contact-content relative z-10">

@@ -1,5 +1,28 @@
 /* Essential Custom Styles - Only keeping what can't be done with Tailwind */
 
+/* Decorative Font Styling for First Letters using Luxurious Script font */
+.decorative-letter-large {
+  font-family: 'Luxurious Script', cursive;
+  font-size: 2.2em; /* Much larger - 120% bigger than surrounding text */
+  font-weight: 900; /* Maximum bold weight */
+  color: #45ce4a; /* Green color for section title letters only */
+  display: inline-block;
+  line-height: 0.8;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Stronger shadow for bold effect */
+  transform: scale(1.1); /* Slightly scale up for extra prominence */
+}
+
+.decorative-letter-name {
+  font-family: 'Charm', cursive;
+  font-size: 1.5em;
+  font-weight: 900; /* Maximum bold weight */
+  color: inherit; /* Inherit color from parent (white for name) */
+  display: inline-block;
+  line-height: 0.8;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Stronger shadow for bold effect */
+  transform: scale(1.1); /* Slightly scale up for extra prominence */
+}
+
 /* Particles Background */
 #particles-js {
     position: fixed;
