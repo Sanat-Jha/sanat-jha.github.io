@@ -1,4 +1,4 @@
-   // Particles.js Configuration
+   // Particles.js Configuration with Green Dots
 particlesJS('particles-js', {
   particles: {
       number: {
@@ -15,25 +15,37 @@ particlesJS('particles-js', {
           type: 'circle'
       },
       opacity: {
-          value: 0.5,
-          random: false
+          value: 0.6,
+          random: true,
+          anim: {
+              enable: true,
+              speed: 1,
+              opacity_min: 0.3,
+              sync: false
+          }
       },
       size: {
-          value: 3,
-          random: true
+          value: 4,
+          random: true,
+          anim: {
+              enable: true,
+              speed: 2,
+              size_min: 2,
+              sync: false
+          }
       },
       line_linked: {
           enable: true,
           distance: 150,
           color: '#45ce4a',
-          opacity: 0.4,
+          opacity: 0.3,
           width: 1
       },
       move: {
           enable: true,
-          speed: 2,
+          speed: 3,
           direction: 'none',
-          random: false,
+          random: true,
           straight: false,
           out_mode: 'out',
           bounce: false
@@ -122,34 +134,94 @@ window.addEventListener('scroll', throttle(handleScrollAnimation, 250));
     };
 
 
-//Nav container
-const navContainer = document.querySelector(".nav-div");
-// Hamburger
-const hamburger = document.querySelector(".hamburger");
-const navLinks = document.querySelector(".nav-links");
-const links = document.querySelectorAll(".nav-links li");
+// Glassmorphism Hamburger Menu JavaScript
+const hamburgerMenuBtn = document.querySelector('.hamburger-menu-btn');
+const fullscreenMenu = document.querySelector('.fullscreen-menu');
+const closeMenuBtn = document.querySelector('.close-menu-btn');
+const menuNavLinks = document.querySelectorAll('.menu-nav-link');
+const navbar = document.querySelector('nav');
 
-hamburger.addEventListener("click", function () {
-  navLinks.classList.toggle("open");
-  hamburger.classList.toggle("toggle");
+// Open menu function
+function openMenu() {
+  hamburgerMenuBtn.classList.add('active');
+  fullscreenMenu.classList.remove('hidden');
+  fullscreenMenu.classList.add('show');
+  fullscreenMenu.classList.remove('hide');
+  document.body.classList.add('overflow-hidden');
+  
+  // Reset link animations
+  menuNavLinks.forEach((link, index) => {
+    link.style.animationDelay = `${(index + 1) * 0.05}s`;
+  });
+}
 
-  links.forEach((link) => {
-    link.classList.toggle("fade");
+// Close menu function
+function closeMenu() {
+  hamburgerMenuBtn.classList.remove('active');
+  fullscreenMenu.classList.add('hide');
+  fullscreenMenu.classList.remove('show');
+  document.body.classList.remove('overflow-hidden');
+  
+  // Hide menu after animation completes
+  setTimeout(() => {
+    fullscreenMenu.classList.add('hidden');
+    fullscreenMenu.classList.remove('hide');
+  }, 300);
+}
+
+// Hamburger button click
+hamburgerMenuBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  if (fullscreenMenu.classList.contains('show')) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+});
+
+// Close button click
+closeMenuBtn.addEventListener('click', closeMenu);
+
+// Menu nav links click
+menuNavLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    // Add click effect
+    link.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      link.style.transform = '';
+    }, 150);
+    
+    // Close menu after a short delay for better UX
+    setTimeout(closeMenu, 200);
   });
 });
 
-// Add click event listeners to all nav links
-links.forEach((link) => {
-  link.addEventListener("click", () => {
-    // Closing the nav menu
-    navLinks.classList.remove("open");
-    
-    // Reverting the toggle to original state
-    hamburger.classList.remove("toggle");
-    
-    // Remove fade class from all links
-    links.forEach((l) => l.classList.remove("fade"));
-  });
+// Close menu when clicking on overlay
+fullscreenMenu.addEventListener('click', function(e) {
+  if (e.target === this || e.target.classList.contains('menu-overlay')) {
+    closeMenu();
+  }
+});
+
+// Prevent menu box clicks from closing menu
+document.querySelector('.menu-box').addEventListener('click', function(e) {
+  e.stopPropagation();
+});
+
+// Close menu on escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && fullscreenMenu.classList.contains('show')) {
+    closeMenu();
+  }
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add('navbar-scrolled');
+  } else {
+    navbar.classList.remove('navbar-scrolled');
+  }
 });
 
 /* Scroll Bar */
@@ -167,41 +239,62 @@ window.addEventListener("scroll", () => {
 // Hobbies
 const hobbies = document.getElementById("hobbies");
 
-// Array of hobbies without the text "Sanat"
+// Array of professional skills and capabilities in first person
 const textArray = [
-  " is a Tech Geek.",
-  " loves programming.",
-  " is the freelancer you are looking for.",
-  " can build you a web app.",
-  " can develop mobile apps.",
+  " architect scalable web applications.",
+  " create stunning user interfaces.",
+  " develop full-stack solutions.",
+  " optimize performance & UX.",
+  " build responsive mobile apps.",
+  " implement modern frameworks.",
+  " deliver enterprise-grade software.",
+  " solve complex technical challenges."
 ];
 
 let index = 0; // Tracking each character
 let idx = 0; // Tracking the current array element
-let isPaused = false; // To control the pause after each line
+let isTyping = true; // true for typing, false for deleting
+let isPaused = false; // To control the pause
 
-// Function that displays each text
+// Function that displays each text with proper typewriter effect
 function displayHobbies() {
   if (!isPaused) {
-    // Always keep "Sanat" at the start and add the sliced part of the current text
-    hobbies.innerHTML = "Sanat" + textArray[idx].slice(0, index);
-    index++;
-
-    // Check if it has reached the end of the current text
-    if (index > textArray[idx].length) {
-      isPaused = true; // Pause the animation
-      setTimeout(() => {
-        index = 0;
-        idx++;
-        
-        // Reset idx if it reaches the end of the array
-        if (idx == textArray.length) {
-          idx = 0;
-        }
-        
-        isPaused = false; // Resume the animation
-      }, 1000); // 1-second pause after each line completes
+    const baseText = "I can";
+    let currentText = "";
+    
+    if (isTyping) {
+      // Typing forward
+      currentText = baseText + textArray[idx].slice(0, index);
+      index++;
+      
+      // Check if finished typing the current text
+      if (index > textArray[idx].length) {
+        isPaused = true;
+        setTimeout(() => {
+          isPaused = false;
+          isTyping = false; // Start deleting
+          index = textArray[idx].length; // Set to full length for deletion
+        }, 1500); // Pause before starting to delete
+      }
+    } else {
+      // Deleting backward
+      currentText = baseText + textArray[idx].slice(0, index);
+      index--;
+      
+      // Check if finished deleting (but keep "I can")
+      if (index <= 0) {
+        isPaused = true;
+        setTimeout(() => {
+          isPaused = false;
+          isTyping = true; // Start typing next text
+          idx = (idx + 1) % textArray.length; // Move to next text
+          index = 0; // Reset character index
+        }, 500); // Short pause before next text
+      }
     }
+    
+    // Display text with cursor
+    hobbies.innerHTML = currentText + '<span class="typing-cursor">|</span>';
   }
 }
 
@@ -371,4 +464,66 @@ document.addEventListener("DOMContentLoaded", () => {
     autoplay: true, // Automatically plays the animation
     path: './img/home.json' // Path to your Lottie animation JSON file
   });
+
+// Contact Section Highlight Animation on Connect Button Click
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to highlight contact cards
+  function highlightContactCards() {
+    const contactCards = document.querySelectorAll('.contact-item');
+    
+    contactCards.forEach((card, index) => {
+      setTimeout(() => {
+        // Add highlight animation
+        card.style.transform = 'scale(1.05) translateY(-5px)';
+        card.style.boxShadow = '0 20px 40px rgba(69, 206, 74, 0.4)';
+        card.style.borderColor = '#45ce4a';
+        card.style.transition = 'all 0.3s ease';
+        
+        // Add a pulsing effect
+        card.style.animation = 'contactHighlight 1.5s ease-in-out';
+        
+        // Reset after animation
+        setTimeout(() => {
+          card.style.transform = '';
+          card.style.boxShadow = '';
+          card.style.borderColor = '';
+          card.style.animation = '';
+        }, 1500);
+      }, index * 150); // Stagger the animation
+    });
+  }
+
+  // Listen for connect button clicks
+  const connectButtons = document.querySelectorAll('a[href="#contact"]');
+  connectButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      // Let the default scroll behavior happen first
+      setTimeout(() => {
+        // Wait for scroll to complete, then highlight
+        setTimeout(highlightContactCards, 800);
+      }, 100);
+    });
+  });
+});
+
+// Add CSS keyframes for contact highlight animation
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes contactHighlight {
+    0% {
+      transform: scale(1) translateY(0);
+      box-shadow: 0 10px 20px rgba(69, 206, 74, 0.2);
+    }
+    50% {
+      transform: scale(1.08) translateY(-8px);
+      box-shadow: 0 25px 50px rgba(69, 206, 74, 0.5);
+      border-color: #45ce4a;
+    }
+    100% {
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 20px 40px rgba(69, 206, 74, 0.4);
+    }
+  }
+`;
+document.head.appendChild(style);
 

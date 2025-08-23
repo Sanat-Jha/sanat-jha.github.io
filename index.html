@@ -13,12 +13,31 @@
   <meta name="googlebot" content="index, follow" />
   <meta name="google-site-verification" content="Google verification code" />
   <title>Sanat Jha - Software Developer Portfolio</title>
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet" /> -->
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary': '#45ce4a',
+            'primary-dark': '#37a23d',
+            'text-light': '#b8b8b8',
+            'bg-dark': '#000000'
+          },
+          fontFamily: {
+            'poppins': ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon" />
-  <title>Sanat Jha - Software Developer Portfolio</title>
 
-  <!-- FontAwesome for Icons (Add this in the <head> section if not already included) -->
+  <!-- FontAwesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
@@ -70,7 +89,7 @@
 
 </head>
 
-<body>
+<body class="font-poppins text-base bg-bg-dark text-white overflow-x-hidden">
   <div id="particles-js"></div>
   <div id="loader">
     <svg viewBox="0 0 600 200">
@@ -114,187 +133,388 @@
       </style>
     </svg>
   </div>
-  <div class="container" id="home">
-    <div class="nav-div">
-      <nav>
-        <a href="#home">
-          <img id="logo-icon" src="./img/logo.png" alt="Sanat Jha" /></a>
-        <div class="hamburger">
-          <div class="line line1"></div>
-          <div class="line line2"></div>
-          <div class="line line3"></div>
-        </div>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Me</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+  <div class="container max-w-7xl mx-auto" id="home">
+    <!-- Glassmorphism Hamburger Navbar for All Screens -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-md border-b border-gray-800/30">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16 md:h-20">
+          
+          <!-- Logo -->
+          <div class="flex-shrink-0">
+            <a href="#home" class="flex items-center space-x-2 group">
+              <img id="logo-icon" class="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" 
+                   src="./img/logo.png" alt="Sanat Jha" />
+              <span class="text-white font-bold text-lg md:text-xl">Sanat Jha</span>
+            </a>
+          </div>
 
-
-    <header>
-      <div class="write-up">
-        <h5 class="greeting">Hi there &#128075;, I'm</h5>
-        <h1 class="name">Sanat Jha</h1>
-        <h3 class="designation">Software Developer</h3>
-        <p class="location" id="hobbies">
-          I am a passionate frontend developer<br />based in Lagos, Nigeria.
-        </p>
-        <a href="#contact" class="lets-talk-btn">Connect with Sanat</a>
-      </div>
-      <div class="prgramming-img">
-        <div id="lottie-animation"></div> <!-- Lottie container -->
-      </div>
-    </header>
-    
-
-    <div class="scroll-up">
-      <a href="#home"><img src="./img/scroll-up.png" alt="scroll up button" />
-      </a>
-    </div>
-    <section id="about" class="about">
-      <h5>About Me <span class="dash"></span></h5>
-      <h1 class="main-h1">
-        Interested In Knowing Little About Me? &#129309;
-      </h1>
-      <div class="about-me">
-        <div class="img-frame">
-          <div class="image-div">
-            <img src="./img/Sanat.png" alt="Sanat Jha" />
+          <!-- Hamburger Menu Button (for all screens) -->
+          <div class="relative">
+            <button type="button" class="hamburger-menu-btn inline-flex items-center justify-center p-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300 backdrop-blur-sm border border-white/20" 
+                    aria-controls="fullscreen-menu" aria-expanded="false">
+              <span class="sr-only">Open menu</span>
+              <!-- Advanced Hamburger icon -->
+              <div class="hamburger-icon-advanced">
+                <span class="hamburger-line-advanced"></span>
+                <span class="hamburger-line-advanced"></span>
+                <span class="hamburger-line-advanced"></span>
+              </div>
+            </button>
           </div>
         </div>
-        <div class="about-details">
-          <h2>Sanat Jha</h2>
-          <h3>Software Developer</h3>
-          <p id="aboutmeText">
+      </div>
+    </nav>
+
+    <!-- Fullscreen Glassmorphism Menu -->
+    <div class="fullscreen-menu fixed inset-0 z-40 hidden">
+      <!-- Background overlay -->
+      <div class="menu-overlay absolute inset-0 bg-black/80 backdrop-blur-xl"></div>
+      
+      <!-- Center glassmorphism box -->
+      <div class="menu-container flex items-center justify-center min-h-screen p-4">
+        <div class="menu-box bg-white/10 backdrop-blur-2xl rounded-3xl border border-white/20 shadow-2xl p-8 md:p-12 max-w-md w-full mx-4 transform scale-95 opacity-0 transition-all duration-500">
+          
+          <!-- Menu Header -->
+          <div class="text-center mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Navigation</h2>
+            <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+          </div>
+          
+          <!-- Navigation Links -->
+          <nav class="space-y-4">
+            <a href="#home" class="menu-nav-link group flex items-center space-x-4 p-4 rounded-xl text-gray-300 hover:text-white hover:bg-white/20 transition-all duration-300 transform translate-x-8 opacity-0">
+              <div class="w-2 h-2 bg-primary rounded-full group-hover:scale-150 transition-transform duration-300"></div>
+              <span class="text-lg font-medium">Home</span>
+              <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </a>
+            
+            <a href="#about" class="menu-nav-link group flex items-center space-x-4 p-4 rounded-xl text-gray-300 hover:text-white hover:bg-white/20 transition-all duration-300 transform translate-x-8 opacity-0">
+              <div class="w-2 h-2 bg-primary rounded-full group-hover:scale-150 transition-transform duration-300"></div>
+              <span class="text-lg font-medium">About</span>
+              <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </a>
+            
+            <a href="#education" class="menu-nav-link group flex items-center space-x-4 p-4 rounded-xl text-gray-300 hover:text-white hover:bg-white/20 transition-all duration-300 transform translate-x-8 opacity-0">
+              <div class="w-2 h-2 bg-primary rounded-full group-hover:scale-150 transition-transform duration-300"></div>
+              <span class="text-lg font-medium">Education</span>
+              <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </a>
+            
+            <a href="#skills" class="menu-nav-link group flex items-center space-x-4 p-4 rounded-xl text-gray-300 hover:text-white hover:bg-white/20 transition-all duration-300 transform translate-x-8 opacity-0">
+              <div class="w-2 h-2 bg-primary rounded-full group-hover:scale-150 transition-transform duration-300"></div>
+              <span class="text-lg font-medium">Skills</span>
+              <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </a>
+            
+            <a href="#projects" class="menu-nav-link group flex items-center space-x-4 p-4 rounded-xl text-gray-300 hover:text-white hover:bg-white/20 transition-all duration-300 transform translate-x-8 opacity-0">
+              <div class="w-2 h-2 bg-primary rounded-full group-hover:scale-150 transition-transform duration-300"></div>
+              <span class="text-lg font-medium">Projects</span>
+              <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </a>
+            
+            <a href="#contact" class="menu-nav-link group flex items-center space-x-4 p-4 rounded-xl text-gray-300 hover:text-white hover:bg-white/20 transition-all duration-300 transform translate-x-8 opacity-0">
+              <div class="w-2 h-2 bg-primary rounded-full group-hover:scale-150 transition-transform duration-300"></div>
+              <span class="text-lg font-medium">Contact</span>
+              <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </a>
+          </nav>
+          
+          <!-- Close Button -->
+          <div class="text-center mt-8">
+            <button class="close-menu-btn inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 text-white hover:rotate-90 transition-all duration-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<header class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 md:pt-20">
+  <div class="max-w-7xl mx-auto w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center min-h-[80vh] lg:min-h-[70vh]">
+      
+      <!-- Text Content Section -->
+      <div class="order-2 lg:order-1 text-center lg:text-left space-y-4 sm:space-y-6 lg:space-y-8 flex flex-col justify-center">
+        <!-- Greeting -->
+        <h5 class="uppercase tracking-widest text-xs sm:text-sm text-gray-400 font-light">
+          Hi there &#128075;, I'm
+        </h5>
+        
+        <!-- Name -->
+        <h1 class="font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 
+                   leading-tight text-white animate-color-change break-words">
+          Sanat Jha
+        </h1>
+        
+        <!-- Designation -->
+        <h3 class="text-primary tracking-wider text-lg sm:text-xl lg:text-2xl xl:text-3xl 
+                   font-medium">
+          Software Developer
+        </h3>
+        
+        <!-- Dynamic Professional Description -->
+        <div class="max-w-md mx-auto lg:mx-0">
+          <p class="text-cyan-400 text-sm sm:text-base lg:text-lg leading-relaxed 
+                    tracking-wide font-medium" id="hobbies">
+            <!-- Dynamic text will be inserted here by JavaScript -->
+          </p>
+        </div>
+        
+        <!-- CTA Button -->
+        <div class="pt-4 sm:pt-6 lg:pt-8">
+          <a href="#contact" 
+             class="connect-btn relative inline-block bg-primary text-black uppercase 
+                    py-3 px-6 sm:py-4 sm:px-8 rounded-lg 
+                    text-sm sm:text-base font-semibold 
+                    transform transition-all duration-700 ease-out
+                    focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
+                    overflow-hidden group perspective-1000">
+            
+            <!-- Animated Border -->
+            <div class="absolute inset-0 rounded-lg border-2 border-transparent bg-gradient-to-r from-primary via-cyan-400 to-primary bg-size-200 animate-border-run"></div>
+            <div class="absolute inset-0.5 bg-primary rounded-lg group-hover:bg-black transition-all duration-500"></div>
+            
+            <!-- Button Content -->
+            <span class="relative z-20 flex items-center gap-2 group-hover:text-primary transition-all duration-500">
+              Connect with Sanat
+              <span class="rocket-emoji text-lg transform transition-all duration-700 group-hover:translate-x-2 group-hover:-translate-y-1 group-hover:rotate-12 group-hover:scale-125">🚀</span>
+            </span>
+            
+            <!-- Floating Rockets -->
+            <div class="floating-rockets absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <span class="rocket-1 absolute text-lg animate-rocket-1">🚀</span>
+              <span class="rocket-2 absolute text-lg animate-rocket-2">🌟</span>
+              <span class="rocket-3 absolute text-lg animate-rocket-3">✨</span>
+              <span class="rocket-4 absolute text-lg animate-rocket-4">🚀</span>
+            </div>
+            
+            <!-- 3D Glow Effect -->
+            <div class="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/20 via-cyan-400/20 to-primary/20 blur-xl scale-110 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+            
+            <!-- Particle Effect -->
+            <div class="particles absolute inset-0 pointer-events-none">
+              <span class="particle particle-1"></span>
+              <span class="particle particle-2"></span>
+              <span class="particle particle-3"></span>
+              <span class="particle particle-4"></span>
+              <span class="particle particle-5"></span>
+              <span class="particle particle-6"></span>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Animation Section -->
+      <div class="order-1 lg:order-2 flex justify-center lg:justify-end items-center">
+        <div class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
+          <div id="lottie-animation" 
+               class="w-full h-auto aspect-square max-h-96 lg:max-h-none"></div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</header>
+    
+    <div class="scroll-up fixed top-[90vh] right-0 invisible z-10">
+      <a href="#home" class="mr-[30px]">
+        <img src="./img/scroll-up.png" alt="scroll up button" class="w-full" />
+      </a>
+    </div>
+    
+    <section id="about" class="about max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-[5vh]">
+      <h5 class="text-sm lg:text-base mb-4">About Me <span class="dash"></span></h5>
+      <h1 class="main-h1 text-2xl lg:text-4xl xl:text-5xl font-bold mb-[5vh] text-center lg:text-left">
+        Interested In Knowing Little About Me? &#129309;
+      </h1>
+      <div class="about-me flex flex-col lg:flex-row gap-8 lg:gap-[5vw] items-center lg:items-start">
+        <div class="img-frame border-4 border-primary relative w-[250px] lg:w-[20vw] xl:w-[250px] max-w-[300px]">
+          <div class="image-div">
+            <img src="./img/Sanat.png" alt="Sanat Jha" class="w-full h-auto" />
+          </div>
+        </div>
+        <div class="about-details flex-1 text-center lg:text-left mt-6 lg:mt-[25px]">
+          <h2 class="text-2xl lg:text-3xl uppercase mb-2">Sanat Jha</h2>
+          <h3 class="text-primary tracking-[0.1rem] font-light text-lg lg:text-xl mt-2 mb-4 uppercase">Software Developer</h3>
+          <p id="aboutmeText" class="mb-8 text-text-light leading-relaxed text-sm lg:text-base">
             Sanat Jha, a BTech student at IIT Roorkee, is a passionate software engineer skilled in Python, Django, and Flutter. With a foundation in C/C++, HTML, and CSS, he builds dynamic web and mobile apps. A tech enthusiast at heart, Sanat brings creativity and precision to his projects.
           </p>
-          <a href="https://docs.google.com/document/d/1_nYigd7y0zfGshzBBLE5rehQWzi83BudymjQzcp7Lw4/edit?usp=sharing" target="_blank">Download Resume</a>
+          <a href="https://docs.google.com/document/d/1_nYigd7y0zfGshzBBLE5rehQWzi83BudymjQzcp7Lw4/edit?usp=sharing" 
+             target="_blank" 
+             class="inline-block py-3 px-6 border-2 border-primary text-white hover:bg-primary-dark hover:text-white transition-all duration-1000">Download Resume</a>
         </div>
       </div>
     </section>
-    <section id="education" class="education">
-      <div class="education-content">
-        <div class="qualifications">
-          <h1>Education Qualification</h1>
-          <ul>
-            <li>BTech from IIT Roorkee</li>
-            <li>12th Boards from MPS School, Kota</li>
-            <li>10th Boards from Amity International School, Gurugram</li>
+    <section id="education" class="education max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-[5vh] text-gray-300">
+      <div class="education-content flex flex-col xl:flex-row justify-between items-start gap-12">
+        <!-- Left Column - Education Qualifications -->
+        <div class="qualifications w-full xl:w-[45%] text-center lg:text-left">
+          <h1 class="text-white text-2xl lg:text-4xl mb-6 border-b-2 border-primary pb-4">Education Qualification</h1>
+          <ul class="list-none p-0 space-y-4">
+            <li class="py-3 relative border-b border-gray-700 hover:border-primary transition-colors duration-1000">BTech from IIT Roorkee</li>
+            <li class="py-3 relative border-b border-gray-700 hover:border-primary transition-colors duration-1000">12th Boards from MPS School, Kota</li>
+            <li class="py-3 relative border-b border-gray-700 hover:border-primary transition-colors duration-1000">10th Boards from Amity International School, Gurugram</li>
           </ul>
-        </div>
-        <div class="img-frame">
-          <div class="image-div">
-            <img src="./img/with-college.jpg" alt="Sanat Jha, IIT Roorkee" />
+          
+          <!-- College Image -->
+          <div class="img-frame border-4 border-primary mt-8 w-[250px] lg:w-[300px] mx-auto lg:mx-0 max-w-[300px]">
+            <div class="image-div">
+              <img src="./img/with-college.jpg" alt="Sanat Jha, IIT Roorkee" class="w-full h-auto" />
+            </div>
           </div>
+        </div>
+
+        <!-- Right Column - JEE Story -->
+        <div class="jee-story w-full xl:w-[50%] text-center lg:text-left">
+          <h1 class="text-white text-2xl lg:text-4xl mb-6 border-b-2 border-primary pb-4">The Journey to Dreams &#127919;</h1>
+          <p class="text-text-light mb-6 leading-relaxed text-sm lg:text-base">
+            Cracking JEE Advanced and securing admission to IIT Roorkee wasn't just an achievement—it was the culmination of two years of relentless dedication, countless sleepless nights, and unwavering determination. From solving complex problems at 2 AM to facing one of the world's most challenging exams, this journey transformed not just my academic path, but my entire perspective on perseverance and dreams.
+          </p>
+          
+          <!-- YouTube Video Embed -->
+          <div class="video-container relative w-full h-0 pb-[56.25%] mb-6 rounded-lg overflow-hidden border-2 border-primary border-opacity-20 hover:border-opacity-60 transition-all duration-300">
+            <iframe 
+              class="absolute top-0 left-0 w-full h-full" 
+              src="https://www.youtube.com/embed/7y91isg0Bso?start=20" 
+              title="My JEE Story - Sanat Jha" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          
+          <p class="text-text-light text-sm italic">
+            Watch my complete journey from preparation struggles to IIT success &#127891;
+          </p>
         </div>
       </div>
     </section>
 
 
 <!-- Skills Section -->
-<section id="skills" class="skills">
-  <h5>My Skill set<span class="dash"></span></h5>
-  <h1 class="main-h1">Tech Arsenal &#128187;</h1>
-  <div class="skill-cards">
-      <a href="https://docs.python.org/3/" target="_blank" class="skill-card" title="View Python Documentation">
+<section id="skills" class="skills max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-[5vh] text-center">
+  <h1 class="main-h1 text-2xl lg:text-4xl xl:text-5xl font-bold mb-[5vh]">Tech Arsenal &#128187;</h1>
+  <div class="skill-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+      <a href="https://docs.python.org/3/" target="_blank" class="skill-card group relative bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-6 overflow-hidden no-underline text-inherit transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-lg hover:shadow-primary/20" title="View Python Documentation">
           <div>
-              <h3>
-                  <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python Icon" /> Python
+              <h3 class="flex items-center justify-center gap-2 mb-4 text-primary">
+                  <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python Icon" class="w-8 h-8 transition-transform duration-300 group-hover:scale-110" /> Python
               </h3>
-              <div class="skill-bar">
-                  <div class="skill-level" style="width: 80%;"></div>
+              <div class="skill-bar w-full h-1.5 bg-white bg-opacity-10 rounded-full overflow-hidden">
+                  <div class="skill-level h-full bg-primary rounded-full w-0 transition-all duration-1000" style="width: 80%;"></div>
               </div>
           </div>
       </a>
 
-      <a href="https://docs.djangoproject.com/" target="_blank" class="skill-card" title="View Django Documentation">
+      <a href="https://docs.djangoproject.com/" target="_blank" class="skill-card group relative bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-6 overflow-hidden no-underline text-inherit transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-lg hover:shadow-primary/20" title="View Django Documentation">
           <div>
-              <h3>
-                  <img src="https://img.icons8.com/color/48/000000/django.png" alt="Django Icon" /> Django
+              <h3 class="flex items-center justify-center gap-2 mb-4 text-primary">
+                  <img src="https://img.icons8.com/color/48/000000/django.png" alt="Django Icon" class="w-8 h-8 transition-transform duration-300 group-hover:scale-110" /> Django
               </h3>
-              <div class="skill-bar">
-                  <div class="skill-level" style="width: 90%;"></div>
+              <div class="skill-bar w-full h-1.5 bg-white bg-opacity-10 rounded-full overflow-hidden">
+                  <div class="skill-level h-full bg-primary rounded-full w-0 transition-all duration-1000" style="width: 90%;"></div>
               </div>
           </div>
       </a>
 
-      <a href="https://docs.flutter.dev/" target="_blank" class="skill-card" title="View Flutter Documentation">
+      <a href="https://docs.flutter.dev/" target="_blank" class="skill-card group relative bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-6 overflow-hidden no-underline text-inherit transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-lg hover:shadow-primary/20" title="View Flutter Documentation">
           <div>
-              <h3>
-                  <img src="https://img.icons8.com/color/48/000000/flutter.png" alt="Flutter Icon" /> Flutter
+              <h3 class="flex items-center justify-center gap-2 mb-4 text-primary">
+                  <img src="https://img.icons8.com/color/48/000000/flutter.png" alt="Flutter Icon" class="w-8 h-8 transition-transform duration-300 group-hover:scale-110" /> Flutter
               </h3>
-              <div class="skill-bar">
-                  <div class="skill-level" style="width: 50%;"></div>
+              <div class="skill-bar w-full h-1.5 bg-white bg-opacity-10 rounded-full overflow-hidden">
+                  <div class="skill-level h-full bg-primary rounded-full w-0 transition-all duration-1000" style="width: 50%;"></div>
               </div>
           </div>
       </a>
 
-      <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="skill-card" title="View HTML & CSS Documentation">
+      <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="skill-card group relative bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-6 overflow-hidden no-underline text-inherit transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-lg hover:shadow-primary/20" title="View HTML & CSS Documentation">
           <div>
-              <h3>
-                  <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML Icon" /> HTML & CSS
+              <h3 class="flex items-center justify-center gap-2 mb-4 text-primary">
+                  <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML Icon" class="w-8 h-8 transition-transform duration-300 group-hover:scale-110" /> HTML & CSS
               </h3>
-              <div class="skill-bar">
-                  <div class="skill-level" style="width: 80%;"></div>
+              <div class="skill-bar w-full h-1.5 bg-white bg-opacity-10 rounded-full overflow-hidden">
+                  <div class="skill-level h-full bg-primary rounded-full w-0 transition-all duration-1000" style="width: 80%;"></div>
               </div>
           </div>
       </a>
-      <a href="https://devdocs.io/cpp/" target="_blank" class="skill-card" title="View C++ Documentation">
+      <a href="https://devdocs.io/cpp/" target="_blank" class="skill-card group relative bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-6 overflow-hidden no-underline text-inherit transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-lg hover:shadow-primary/20" title="View C++ Documentation">
           <div>
-              <h3>
-                  <img src="https://img.icons8.com/?size=100&id=40669&format=png&color=000000" alt="C Icon" /> C++
+              <h3 class="flex items-center justify-center gap-2 mb-4 text-primary">
+                  <img src="https://img.icons8.com/?size=100&id=40669&format=png&color=000000" alt="C Icon" class="w-8 h-8 transition-transform duration-300 group-hover:scale-110" /> C++
               </h3>
-              <div class="skill-bar">
-                  <div class="skill-level" style="width: 60%;"></div>
-              </div>
-          </div>
-      </a>
-
-      <a href="https://git-scm.com/doc" target="_blank" class="skill-card" title="View Git Documentation">
-          <div>
-              <h3>
-                  <img src="https://img.icons8.com/color/48/000000/git.png" alt="Git Icon" /> Git
-              </h3>
-              <div class="skill-bar">
-                  <div class="skill-level" style="width: 50%;"></div>
+              <div class="skill-bar w-full h-1.5 bg-white bg-opacity-10 rounded-full overflow-hidden">
+                  <div class="skill-level h-full bg-primary rounded-full w-0 transition-all duration-1000" style="width: 60%;"></div>
               </div>
           </div>
       </a>
 
-      <a href="https://docs.github.com/" target="_blank" class="skill-card" title="View GitHub Documentation">
+      <a href="https://git-scm.com/doc" target="_blank" class="skill-card group relative bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-6 overflow-hidden no-underline text-inherit transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-lg hover:shadow-primary/20" title="View Git Documentation">
           <div>
-              <h3>
-                  <img src="https://img.icons8.com/color/48/000000/github.png" alt="GitHub Icon" /> GitHub
+              <h3 class="flex items-center justify-center gap-2 mb-4 text-primary">
+                  <img src="https://img.icons8.com/color/48/000000/git.png" alt="Git Icon" class="w-8 h-8 transition-transform duration-300 group-hover:scale-110" /> Git
               </h3>
-              <div class="skill-bar">
-                  <div class="skill-level" style="width: 40%;"></div>
+              <div class="skill-bar w-full h-1.5 bg-white bg-opacity-10 rounded-full overflow-hidden">
+                  <div class="skill-level h-full bg-primary rounded-full w-0 transition-all duration-1000" style="width: 50%;"></div>
               </div>
           </div>
       </a>
 
-      <a href="https://code.visualstudio.com/docs" target="_blank" class="skill-card" title="View VS Code Documentation">
+      <a href="https://docs.github.com/" target="_blank" class="skill-card group relative bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-6 overflow-hidden no-underline text-inherit transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-lg hover:shadow-primary/20" title="View GitHub Documentation">
           <div>
-              <h3>
-                  <img src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png" alt="VS Code Icon" /> VS Code
+              <h3 class="flex items-center justify-center gap-2 mb-4 text-primary">
+                  <img src="https://img.icons8.com/color/48/000000/github.png" alt="GitHub Icon" class="w-8 h-8 transition-transform duration-300 group-hover:scale-110" /> GitHub
               </h3>
-              <div class="skill-bar">
-                  <div class="skill-level" style="width: 80%;"></div>
+              <div class="skill-bar w-full h-1.5 bg-white bg-opacity-10 rounded-full overflow-hidden">
+                  <div class="skill-level h-full bg-primary rounded-full w-0 transition-all duration-1000" style="width: 40%;"></div>
               </div>
           </div>
       </a>
 
-      <a href="https://docs.arduino.cc/" target="_blank" class="skill-card" title="View Arduino Documentation">
+      <a href="https://code.visualstudio.com/docs" target="_blank" class="skill-card group relative bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-6 overflow-hidden no-underline text-inherit transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-lg hover:shadow-primary/20" title="View VS Code Documentation">
           <div>
-              <h3>
-                  <img src="https://img.icons8.com/color/48/000000/arduino.png" alt="Arduino Icon" /> Arduino
+              <h3 class="flex items-center justify-center gap-2 mb-4 text-primary">
+                  <img src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png" alt="VS Code Icon" class="w-8 h-8 transition-transform duration-300 group-hover:scale-110" /> VS Code
               </h3>
-              <div class="skill-bar">
-                  <div class="skill-level" style="width: 50%;"></div>
+              <div class="skill-bar w-full h-1.5 bg-white bg-opacity-10 rounded-full overflow-hidden">
+                  <div class="skill-level h-full bg-primary rounded-full w-0 transition-all duration-1000" style="width: 80%;"></div>
+              </div>
+          </div>
+      </a>
+
+      <a href="https://docs.arduino.cc/" target="_blank" class="skill-card group relative bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-6 overflow-hidden no-underline text-inherit transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-lg hover:shadow-primary/20" title="View Arduino Documentation">
+          <div>
+              <h3 class="flex items-center justify-center gap-2 mb-4 text-primary">
+                  <img src="https://img.icons8.com/color/48/000000/arduino.png" alt="Arduino Icon" class="w-8 h-8 transition-transform duration-300 group-hover:scale-110" /> Arduino
+              </h3>
+              <div class="skill-bar w-full h-1.5 bg-white bg-opacity-10 rounded-full overflow-hidden">
+                  <div class="skill-level h-full bg-primary rounded-full w-0 transition-all duration-1000" style="width: 50%;"></div>
               </div>
           </div>
       </a>
@@ -302,22 +522,21 @@
 </section>
 
 
-<section id="projects" class="projects">
-  <h5>Featured Projects <span class="dash"></span></h5>
-  <h1 class="main-h1">Some Projects I've Worked On &#128194;</h1>
+<section id="projects" class="projects max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-[5vh] border-t-2 border-primary">
+  <h5 class="text-sm lg:text-base mb-4 text-primary">Featured Projects <span class="dash bg-primary"></span></h5>
+  <h1 class="main-h1 text-2xl lg:text-4xl xl:text-5xl font-bold mb-[5vh] text-center lg:text-left">Some Projects I've Worked On &#128194;</h1>
   
-  <div class="project-grid">
-    <div class="project-card">
-      <div class="project-content">
-        <div class="project-image">
-          <img src="/img/miccamerastories.png" alt="Mic Camera Stories" />
-          <div class="project-overlay"></div>
+  <div class="project-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-12">
+    <div class="project-card bg-black bg-opacity-20 border border-primary border-opacity-10 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:border-primary">
+      <div class="project-content relative">
+        <div class="project-image relative overflow-hidden">
+          <img src="./img/miccamerastories.png" alt="Mic Camera Stories" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110" />
         </div>
-        <div class="project-info">
-          <h3>Mic Camera Stories</h3>
-          <p>A startup platform providing voice to unheard people to share their stories and experiences with the world.</p>
-          <div class="project-links">
-            <a href="https://miccamerastories.com/" target="_blank" class="project-link">
+        <div class="project-info p-6">
+          <h3 class="text-primary mb-4 text-xl lg:text-2xl">Mic Camera Stories</h3>
+          <p class="text-text-light mb-6 leading-relaxed text-sm lg:text-base">A startup platform providing voice to unheard people to share their stories and experiences with the world.</p>
+          <div class="project-links flex gap-4">
+            <a href="https://miccamerastories.com/" target="_blank" class="project-link inline-flex items-center gap-2 py-2 px-4 bg-primary text-black rounded-md no-underline transition-colors duration-300 hover:bg-primary-dark hover:text-white">
               <i class="fas fa-external-link-alt"></i> Visit Site
             </a>
           </div>
@@ -325,17 +544,16 @@
       </div>
     </div>
 
-    <div class="project-card">
-      <div class="project-content">
-        <div class="project-image">
-          <img src="/img/consumercompass.png" alt="Consumer Compass" />
-          <div class="project-overlay"></div>
+    <div class="project-card bg-black bg-opacity-20 border border-primary border-opacity-10 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:border-primary">
+      <div class="project-content relative">
+        <div class="project-image relative overflow-hidden">
+          <img src="./img/consumercompass.png" alt="Consumer Compass" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110" />
         </div>
-        <div class="project-info">
-          <h3>Consumer Compass</h3>
-          <p>A comprehensive platform for reliable tech gadget reviews, combining trusted user feedback from multiple sources.</p>
-          <div class="project-links">
-            <a href="https://consumer-compass.onrender.com/" target="_blank" class="project-link">
+        <div class="project-info p-6">
+          <h3 class="text-primary mb-4 text-xl lg:text-2xl">Consumer Compass</h3>
+          <p class="text-text-light mb-6 leading-relaxed text-sm lg:text-base">A comprehensive platform for reliable tech gadget reviews, combining trusted user feedback from multiple sources.</p>
+          <div class="project-links flex gap-4">
+            <a href="https://consumer-compass.onrender.com/" target="_blank" class="project-link inline-flex items-center gap-2 py-2 px-4 bg-primary text-black rounded-md no-underline transition-colors duration-300 hover:bg-primary-dark hover:text-white">
               <i class="fas fa-external-link-alt"></i> Visit Site
             </a>
           </div>
@@ -343,17 +561,16 @@
       </div>
     </div>
 
-    <div class="project-card">
-      <div class="project-content">
-        <div class="project-image">
-          <img src="/img/celebralenigma.png" alt="Cerebral Enigma" />
-          <div class="project-overlay"></div>
+    <div class="project-card bg-black bg-opacity-20 border border-primary border-opacity-10 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:border-primary">
+      <div class="project-content relative">
+        <div class="project-image relative overflow-hidden">
+          <img src="./img/celebralenigma.png" alt="Cerebral Enigma" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110" />
         </div>
-        <div class="project-info">
-          <h3>Cerebral Enigma</h3>
-          <p>A thought-provoking blog covering technology, social issues, and psychology, offering unique perspectives and insights.</p>
-          <div class="project-links">
-            <a href="https://cerebralenigma.pythonanywhere.com/" target="_blank" class="project-link">
+        <div class="project-info p-6">
+          <h3 class="text-primary mb-4 text-xl lg:text-2xl">Cerebral Enigma</h3>
+          <p class="text-text-light mb-6 leading-relaxed text-sm lg:text-base">A thought-provoking blog covering technology, social issues, and psychology, offering unique perspectives and insights.</p>
+          <div class="project-links flex gap-4">
+            <a href="https://cerebralenigma.pythonanywhere.com/" target="_blank" class="project-link inline-flex items-center gap-2 py-2 px-4 bg-primary text-black rounded-md no-underline transition-colors duration-300 hover:bg-primary-dark hover:text-white">
               <i class="fas fa-external-link-alt"></i> Visit Site
             </a>
           </div>
@@ -361,57 +578,57 @@
       </div>
     </div>
   </div>
-  <div class="see-all-projects">
-    <button class="see-all-btn" onclick="window.location.href = 'projects.html';">
+  <div class="see-all-projects mt-12 text-center">
+    <button class="see-all-btn bg-transparent border-2 border-primary text-primary py-3 px-6 rounded-lg text-base font-medium cursor-pointer inline-flex items-center gap-2 transition-all duration-300 hover:bg-primary hover:text-black hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20" onclick="window.location.href = 'projects.html';">
         <span>See All Projects</span>
-        <i class="fas fa-arrow-right"></i>
+        <i class="fas fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
     </button>
 </div>
 </section>
 
 
     <!-- Contact Section -->
-<section id="contact" class="contact">
-  <h5>Let's Connect <span class="dash"></span></h5>
-  <h1 class="main-h1">Stay in Touch &#128241;</h1>
-  <div id="contact-section" class="contact-details">
-      <a href="mailto:sanatjha4@gmail.com" class="contact-item" target="_blank">
-          <div class="contact-content">
-              <i class="fas fa-envelope"></i>
-              <h5>Email</h5>
-              <span>sanatjha4@gmail.com</span>
+<section id="contact" class="contact max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-[5vh] text-center">
+  <h5 class="text-sm lg:text-base mb-4">Let's Connect <span class="dash"></span></h5>
+  <h1 class="main-h1 text-2xl lg:text-4xl xl:text-5xl font-bold mb-[5vh]">Stay in Touch &#128241;</h1>
+  <div id="contact-section" class="contact-details grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+      <a href="mailto:sanatjha4@gmail.com" class="contact-item group relative no-underline text-inherit bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-8 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:border-primary hover:shadow-lg hover:shadow-primary/20" target="_blank">
+          <div class="contact-content relative z-10">
+              <i class="fas fa-envelope text-4xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110"></i>
+              <h5 class="text-primary my-2 text-lg">Email</h5>
+              <span class="block text-white text-sm mt-2">sanatjha4@gmail.com</span>
           </div>
       </a>
 
-      <a href="https://instagram.com/sanatjha4" class="contact-item" target="_blank">
-          <div class="contact-content">
-              <i class="fab fa-instagram"></i>
-              <h5>Instagram</h5>
-              <span>@sanatjha4</span>
+      <a href="https://instagram.com/sanatjha4" class="contact-item group relative no-underline text-inherit bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-8 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:border-primary hover:shadow-lg hover:shadow-primary/20" target="_blank">
+          <div class="contact-content relative z-10">
+              <i class="fab fa-instagram text-4xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110"></i>
+              <h5 class="text-primary my-2 text-lg">Instagram</h5>
+              <span class="block text-white text-sm mt-2">@sanatjha4</span>
           </div>
       </a>
 
-      <a href="https://www.linkedin.com/in/sanatjha4/" class="contact-item" target="_blank">
-          <div class="contact-content">
-              <i class="fab fa-linkedin"></i>
-              <h5>LinkedIn</h5>
-              <span>Sanat Kumar Jha</span>
+      <a href="https://www.linkedin.com/in/sanatjha4/" class="contact-item group relative no-underline text-inherit bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-8 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:border-primary hover:shadow-lg hover:shadow-primary/20" target="_blank">
+          <div class="contact-content relative z-10">
+              <i class="fab fa-linkedin text-4xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110"></i>
+              <h5 class="text-primary my-2 text-lg">LinkedIn</h5>
+              <span class="block text-white text-sm mt-2">Sanat Kumar Jha</span>
           </div>
       </a>
 
-      <a href="https://github.com/Sanat-Jha" class="contact-item" target="_blank">
-          <div class="contact-content">
-              <i class="fab fa-github"></i>
-              <h5>GitHub</h5>
-              <span>Sanat-Jha</span>
+      <a href="https://github.com/Sanat-Jha" class="contact-item group relative no-underline text-inherit bg-black bg-opacity-80 border border-primary border-opacity-10 rounded-lg p-8 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:border-primary hover:shadow-lg hover:shadow-primary/20" target="_blank">
+          <div class="contact-content relative z-10">
+              <i class="fab fa-github text-4xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110"></i>
+              <h5 class="text-primary my-2 text-lg">GitHub</h5>
+              <span class="block text-white text-sm mt-2">Sanat-Jha</span>
           </div>
       </a>
   </div>
 </section>
 
 
-    <footer>
-      <h5>&copy;2025 Sanat Jha</h5>
+    <footer class="h-[10vh] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+      <h5 class="text-primary tracking-[0.2rem] text-sm">&copy;2025 Sanat Jha</h5>
     </footer>
   </div>
   <script src="script/script.js"></script>
