@@ -1,0 +1,1 @@
+Remove hero.png, react.svg, and vite.svg if not needed. They are not used in the new terminal UI.

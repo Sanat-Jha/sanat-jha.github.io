@@ -1,0 +1,1 @@
+Please manually remove hero.png, react.svg, and vite.svg from this folder if you want to keep the project clean. These are not used in the new terminal UI.

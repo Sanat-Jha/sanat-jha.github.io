@@ -1,0 +1,19 @@
+Deskrupt (https://www.youtube.com/watch?v=wEdtsFItslw) | Winter of Code, SDS Labs | Flutter (Desktop), Django, Jinja, SQLite
+• Built a Windows desktop customization ecosystem.
+• Enables dynamic wallpapers and animations designing, widgets customization, and shortcuts configurations.
+• Developed a Django cloud for cross-device configuration sync and enabled community-based theme sharing.
+• Created a HTML inspired design system (margin, padding, border-radius, etc.) for customization.
+Analytiq (https://www.youtube.com/watch?v=otNqIfx9aik) | 1st Rank, Merge-Conflict Hackathon | FastAPI, React, DuckDB, Azure
+• Built a web observability platform tailored for non-technical founders.
+• Simplified complex website analytics into intuitive dashboards with actionable performance metrics.
+• Integrated context-aware AI chat for business insights from live monitoring data.
+• Designed agentic architecture with expert agents, dynamic dashboards, and anomaly alerts.
+SnapQuote (https://github.com/Sanat-Jha/QuoteSnap-backend) | Freelance Project (Internal Automation Tool) | Flask, React, RAG, Google OAuth2
+• Built an intelligent quotation automation platform for a Dubai-based industrial hardware business.
+• Parsed email RFQs, extracted product requirements, and auto-generated formal quotations.
+• Designed an asynchronous event-driven architecture to process 3,000–5,000+ emails daily.
+• Integrated RAG-based recommendations to suggest similar historical orders and accelerate the sales cycle.
+TruelyFAQ (https://github.com/Sanat-Jha/Truely-FAQ) | Self-Initiated Project | Django, NLP, REST APIs, E-mail automation
+• Built an API-driven FAQ automation service using NLP.
+• Analyzed recurring user queries to identify high-frequency issues.
+• Automatically updated website FAQs to reduce manual support effort.

@@ -1,0 +1,1 @@
+This folder previously contained images for the default Vite/React template. All assets are now unused in the terminal portfolio project.
