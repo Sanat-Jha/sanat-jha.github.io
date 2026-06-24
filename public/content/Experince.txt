@@ -1,0 +1,19 @@
+Attacked.Ai (http://attacked.ai/) | Backend + AI Engineer Intern | March 2025 – June 2025
+• Designed backend architecture for adversarial attack simulation platform for enterprise cyber-risk assessment.
+• Implemented fully agentic workflows for real-time threat scenario generation.
+• Integrated LiveKit-based voice interaction for conversational AI adversary agents.
+SeraphGuard Labs (http://seraphguardlabs.com/) | Founding Engineer - Backend Intern | November 2025 – January 2026
+• Architected and developed the core backend infrastructure for Guardian AI, a parental control platform.
+• Built secure device-linking and real-time event streaming between Flutter child devices and dashboards.
+• Designed a privacy-focused, scalable multi-tenant system architecture.
+Google Developer Students Club, IITR (https://gdg.community.dev/) | Software Engineer - Tech Member | November 2025
+• Created a plug-and-play real-time progress visibility python-package for
+Django developers.
+• Used WebSockets to enable live status tracking of background tasks.
+• Supported workflows like scraping, file processing, and ML inference.
+• Achieved 874 total downloads, averaging 5 downloads per day ( 34 per
+week).
+ASME, IITR (https://asme.iitr.ac.in/) | Drone Engineer - Team Member | October 2025
+• Developed a payload-carrying drone for accurate pickup and drop at predefined locations.
+• Used Pixhawk for flight control, Arduino for payload automation, and GPS for waypoint navigation.
+• Handled system integration, configuration, and payload stability testing.

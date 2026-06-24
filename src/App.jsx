@@ -1,3 +1,5 @@
+// Rickroll ASCII frames (real animation, loaded from rick.txt)
+let RICKROLL_FRAMES = [];
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
@@ -58,6 +60,9 @@ function App() {
   const [lastCommand, setLastCommand] = useState('');
   const [showSplash, setShowSplash] = useState(false);
   const [splashText, setSplashText] = useState('');
+  const [showDance, setShowDance] = useState(false);
+  const [danceFrame, setDanceFrame] = useState('');
+  const [danceFrames, setDanceFrames] = useState([]); // Array of real frames
   const inputRef = useRef(null);
   const scrollRef = useRef(null);
 
@@ -71,7 +76,8 @@ function App() {
     }
   }, [history]);
 
-  // Preload all text files on mount
+
+  // Preload all text files and rick frames on mount
   useEffect(() => {
     async function loadFiles() {
       const cache = {};
@@ -81,6 +87,16 @@ function App() {
         }
       }
       setFileCache(cache);
+
+      // Load rick.txt and split into frames (36 lines per frame)
+      const rickText = await fetchTextFile('/content/rick.txt');
+      const rickLines = rickText.split(/\r?\n/);
+      const frames = [];
+      for (let i = 0; i < rickLines.length; i += 36) {
+        frames.push(rickLines.slice(i, i + 36).join('\n'));
+      }
+      setDanceFrames(frames);
+      RICKROLL_FRAMES = frames; // for legacy fallback
     }
     loadFiles();
   }, []);
@@ -141,6 +157,7 @@ function App() {
         setHistory(prev => [
           ...prev,
           { type: 'output', value: 'Type ls to get the menu of portfolio' },
+          { type: 'output', value: 'Type Dance for some Fun' },
           { type: 'output', value: 'Type Port if you are not techy enough to use a terminal' },
           { type: 'output', value: 'Type exit to close this site.' },
         ]);
@@ -148,7 +165,7 @@ function App() {
       })();
       return;
     }
-
+    
     if (!hasStarted) {
       setHistory(prev => [
         ...prev,
@@ -157,8 +174,35 @@ function App() {
       ]);
       return;
     }
-
-
+    
+    
+    // DANCE command: fullscreen ASCII rickroll animation (real frames)
+    if (normalized === 'dance' || normalized === 'fun') {
+      setHistory(prev => [
+        ...prev,
+        { type: 'command', value: command },
+        { type: 'output', value: 'Enjoy the ASCII dance! (Rickroll)' },
+      ]);
+      setShowDance(true);
+      (async () => {
+        // Use danceFrames (real frames from rick.txt)
+        const frames = danceFrames.length > 0 ? danceFrames : RICKROLL_FRAMES;
+        if (frames.length === 0) {
+          setDanceFrame('Loading animation...');
+          await new Promise(r => setTimeout(r, 1000));
+        } else {
+          for (let loop = 0; loop < 3; loop++) {
+            for (let i = 0; i < frames.length; i++) {
+              setDanceFrame(frames[i]);
+              await new Promise(r => setTimeout(r, 40));
+            }
+          }
+        }
+        setShowDance(false);
+        setDanceFrame('');
+      })();
+      return;
+    }
     if (normalized === 'port') {
       setHistory(prev => [
         ...prev,
@@ -304,14 +348,19 @@ function App() {
           <pre className="splash-ascii">{splashText}</pre>
         </div>
       )}
-      <section className="terminal-window" aria-label="Terminal portfolio" style={{ display: showSplash ? 'none' : undefined }}>
+      {showDance && (
+        <div className="splash-overlay">
+          <pre className="splash-ascii">{danceFrame}</pre>
+        </div>
+      )}
+      <section className="terminal-window" aria-label="Terminal portfolio" style={{ display: showSplash || showDance ? 'none' : undefined }}>
         <header className="terminal-header">
           <div className="traffic-lights" aria-hidden="true">
             <span className="dot dot-red"></span>
             <span className="dot dot-yellow"></span>
             <span className="dot dot-green"></span>
           </div>
-          <p className="terminal-title">SanatJha://portfolio</p>
+          <p className="terminal-title">blacknode://portfolio</p>
         </header>
 
         <div className="terminal-body" ref={scrollRef}>

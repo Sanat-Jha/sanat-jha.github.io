@@ -1,0 +1,4 @@
+Languages: Python, JavaScript, Dart, C++
+Technologies/Frameworks: Django, Flask, FastAPI, Flutter, TailwindCSS, React.js, Next.js, Reflex
+DevOps/System Design: AWS, Azure, Docker, CI/CD, API Design, Database Design
+AI: LLMs, RAG, Langchain, Livekit

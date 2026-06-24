@@ -1,0 +1,12 @@
+Experience in 
+ - Backend Architecture Development
+ - Business Logic Implementation
+ - Database Management
+ - DevOps and System Design
+ - Cross-Platform with Flutter
+ - Agentic AI and Automation Systems
+
+Currently pursuing B.Tech as a second-year student @ IIT Roorkee.
+Started coding in 8th standard just for fun, then never escaped this trap.
+Major experience in Python-Django based backend systems for 5 years, along with DevOps and system design.
+Switched to Gen-AI, learning new tech daily.
